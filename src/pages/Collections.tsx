@@ -7,6 +7,7 @@ import shoeGold from "@/assets/shoe-gold.jpg";
 import shoeBurgundy from "@/assets/shoe-burgundy.jpg";
 import shoeGrey from "@/assets/shoe-grey.jpg";
 import heroShoe from "@/assets/hero-shoe.jpg";
+import { Link } from "react-router-dom";
 
 const allProducts = [
   { id: 1, name: "Arctic Blanc", category: "High-Top", price: 1290, image: shoeWhite, isNew: true, collection: "Signature" },
@@ -56,10 +57,10 @@ const ProductCard = ({ product }: { product: typeof allProducts[0] }) => {
         </button> */}
 
         <div className={`absolute bottom-4 left-4 right-4 transition-all duration-500 ${isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-          <button className="w-full bg-foreground text-background py-3 text-sm uppercase tracking-widest font-body hover:bg-primary hover:text-primary-foreground transition-colors duration-300 flex items-center justify-center gap-2">
+          <Link to={`/product/${product.id}`} className="w-full bg-foreground text-background py-3 text-sm uppercase tracking-widest font-body hover:bg-primary hover:text-primary-foreground transition-colors duration-300 flex items-center justify-center gap-2">
             View Details
             <ArrowUpRight className="w-4 h-4" />
-          </button>
+          </Link>
         </div>
       </div>
 

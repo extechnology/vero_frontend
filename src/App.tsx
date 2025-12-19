@@ -10,6 +10,7 @@ import Story from "./pages/Story";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ui/ScrollToTop";
+import ProductDetail from "./pages/ProductDetail";
 
 const queryClient = new QueryClient();
 
@@ -26,7 +27,7 @@ const App = () => {
             <Route path="/collections" element={<Collections />} />
             <Route path="/story" element={<Story />} />
             <Route path="/contact" element={<Contact />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

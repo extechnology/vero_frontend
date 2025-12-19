@@ -4,6 +4,7 @@ import shoeWhite from "@/assets/shoe-white.jpg";
 import shoeGold from "@/assets/shoe-gold.jpg";
 import shoeBurgundy from "@/assets/shoe-burgundy.jpg";
 import shoeGrey from "@/assets/shoe-grey.jpg";
+import { Link } from "react-router-dom";  
 
 const products = [
   {
@@ -98,10 +99,10 @@ const ProductCard = ({ product, index }: { product: typeof products[0]; index: n
             isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          <button className="w-full bg-foreground text-background py-3 text-sm uppercase tracking-widest font-body hover:bg-primary hover:text-primary-foreground transition-colors duration-300 flex items-center justify-center gap-2">
+          <Link to={`/product/${product.id}`} className="w-full bg-foreground text-background py-3 text-sm uppercase tracking-widest font-body hover:bg-primary hover:text-primary-foreground transition-colors duration-300 flex items-center justify-center gap-2">
             Quick View
             <ArrowUpRight className="w-4 h-4" />
-          </button>
+          </Link>
         </div>
       </div>
 
