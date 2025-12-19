@@ -15,65 +15,67 @@ const HeroSection = () => {
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-primary/3 blur-3xl" />
       <div className="absolute inset-0 grain" />
 
-      <div className="relative z-10 container mx-auto px-4 lg:px-12 py-20 md:min-h-screen flex items-center">
+      <div className="relative z-10 content-center container mx-auto px-4 lg:px-12  md:min-h-screen flex items-center">
         {/* MOBILE LAYOUT */}
-        <div className="w-full flex flex-col items-center min-h-[100dvh] lg:hidden">
-          {/* Floating Image */}
-          <div className="relative w-full flex justify-center pt-24 pb-10">
-            <div className="absolute inset-0 bg-primary/20 blur-[140px] rounded-full scale-75" />
-            <img
-              src={heroShoe}
-              alt="Premium luxury sneaker"
-              className="w-full max-w-xs object-contain drop-shadow-2xl animate-float"
-            />
-          </div>
+        <div className="w-full min-h-[100dvh] lg:hidden flex items-center justify-center">
+          <div className="flex flex-col items-center text-center gap-10 w-full px-6">
+            {/* Floating Image */}
+            <div className="relative w-full flex justify-center">
+              <div className="absolute inset-0 bg-primary/20 blur-[140px] rounded-full scale-75" />
+              <img
+                src={heroShoe}
+                alt="Premium luxury sneaker"
+                className="w-full max-w-xs object-contain drop-shadow-2xl animate-float"
+              />
+            </div>
 
-          {/* Stats – Horizontal */}
-          <div className="flex justify-center gap-10 mb-10">
-            {[
-              { value: "150+", label: "Artisans" },
-              { value: "25", label: "Years" },
-              { value: "50K+", label: "Clients" },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <p className="font-display text-2xl text-foreground">
-                  {stat.value}
-                </p>
-                <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
+            {/* Stats */}
+            <div className="flex gap-10">
+              {[
+                { value: "150+", label: "Artisans" },
+                { value: "25", label: "Years" },
+                { value: "50K+", label: "Clients" },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <p className="font-display text-2xl text-foreground">
+                    {stat.value}
+                  </p>
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
 
-          {/* Price */}
-          <div className="text-center mb-6">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-              Starting at
-            </p>
-            <p className="font-display text-3xl text-foreground">$890</p>
-          </div>
+            {/* Price */}
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+                Starting at
+              </p>
+              <p className="font-display text-3xl text-foreground">$890</p>
+            </div>
 
-          {/* Actions */}
-          <div className="w-full max-w-xs flex flex-col gap-4">
-            <Button
-              onClick={() => navigate("/collections")}
-              variant="hero"
-              size="lg"
-              className="w-full group"
-            >
-              Explore Collection
-              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-            </Button>
+            {/* Actions */}
+            <div className="w-full max-w-xs flex flex-col gap-4">
+              <Button
+                onClick={() => navigate("/collections")}
+                variant="hero"
+                size="lg"
+                className="w-full group"
+              >
+                Explore Collection
+                <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+              </Button>
 
-            <Button
-              onClick={() => navigate("/story")}
-              variant="outline"
-              size="lg"
-              className="w-full border-white/20 hover:border-white/40 hover:bg-white/5"
-            >
-              Our Story
-            </Button>
+              <Button
+                onClick={() => navigate("/story")}
+                variant="outline"
+                size="lg"
+                className="w-full border-white/20 hover:border-white/40 hover:bg-white/5"
+              >
+                Our Story
+              </Button>
+            </div>
           </div>
         </div>
 
