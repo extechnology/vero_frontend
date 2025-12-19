@@ -1,14 +1,30 @@
 import { Instagram, Twitter, Facebook, MapPin, Phone, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const footerLinks = {
-  shop: ["All Products", "New Arrivals", "Bestsellers", "Limited Edition"],
-  company: ["Our Story", "Craftsmanship", "Sustainability", "Careers"],
-  support: ["Contact Us", "Size Guide", "Shipping", "Returns"],
+  shop: [
+    { label: "All Products", href: "/collections" },
+    { label: "New Arrivals", href: "/collections" },
+    { label: "Bestsellers", href: "/collections" },
+    { label: "Limited Edition", href: "/collections" },
+  ],
+  company: [
+    { label: "Our Story", href: "/story" },
+    { label: "Craftsmanship", href: "/#craftsmanship" },
+    { label: "Sustainability", href: "/story" },
+    { label: "Careers", href: "/contact" },
+  ],
+  support: [
+    { label: "Contact Us", href: "/contact" },
+    { label: "Size Guide", href: "/contact" },
+    { label: "Shipping", href: "/contact" },
+    { label: "Returns", href: "/contact" },
+  ],
 };
 
 const Footer = () => {
   return (
-    <footer id="contact" className="py-20 lg:py-24 bg-background relative">
+    <footer className="py-20 lg:py-24 bg-background relative">
       {/* Top Border */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       
@@ -19,14 +35,14 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 lg:gap-8">
           {/* Brand Column */}
           <div className="col-span-2 space-y-6">
-            <div className="flex items-center gap-3">
+            <Link to="/" className="flex items-center gap-3">
               <span className="font-display text-2xl tracking-tight text-foreground">
                 LUXE
               </span>
               <span className="text-primary font-display italic text-lg">
                 Stride
               </span>
-            </div>
+            </Link>
             <p className="text-muted-foreground font-body text-sm leading-relaxed max-w-xs">
               Crafting extraordinary footwear for those who appreciate the finest things in life.
             </p>
@@ -48,10 +64,10 @@ const Footer = () => {
             <h4 className="font-body text-sm uppercase tracking-widest text-foreground">Shop</h4>
             <ul className="space-y-3">
               {footerLinks.shop.map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-body">
-                    {link}
-                  </a>
+                <li key={link.label}>
+                  <Link to={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-body">
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -62,10 +78,16 @@ const Footer = () => {
             <h4 className="font-body text-sm uppercase tracking-widest text-foreground">Company</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-body">
-                    {link}
-                  </a>
+                <li key={link.label}>
+                  {link.href.startsWith("/#") ? (
+                    <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-body">
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link to={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-body">
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -76,10 +98,10 @@ const Footer = () => {
             <h4 className="font-body text-sm uppercase tracking-widest text-foreground">Support</h4>
             <ul className="space-y-3">
               {footerLinks.support.map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-body">
-                    {link}
-                  </a>
+                <li key={link.label}>
+                  <Link to={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-body">
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
