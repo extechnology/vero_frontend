@@ -15,9 +15,9 @@ const HeroSection = () => {
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-primary/3 blur-3xl" />
       <div className="absolute inset-0 grain" />
 
-      <div className="relative z-10 container mx-auto px-6 lg:px-12 py-20 md:min-h-screen flex items-center">
+      <div className="relative z-10 container mx-auto px-4 lg:px-12 py-20 md:min-h-screen flex items-center">
         {/* MOBILE LAYOUT */}
-        <div className="w-full flex flex-col items-center lg:hidden">
+        <div className="w-full flex flex-col items-center min-h-screen lg:hidden">
           {/* Floating Image */}
           <div className="relative w-full flex justify-center pt-24 pb-10">
             <div className="absolute inset-0 bg-primary/20 blur-[140px] rounded-full scale-75" />
