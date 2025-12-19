@@ -1,69 +1,112 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import heroShoe from "@/assets/hero-shoe.jpg";
-
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
-  return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-radial opacity-50" />
-      <div className="absolute top-1/4 -right-1/4 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl animate-pulse-gold" />
-      <div className="absolute bottom-1/4 -left-1/4 w-[400px] h-[400px] rounded-full bg-primary/3 blur-3xl" />
+  const navigate = useNavigate();
+  
 
-      {/* Grain Overlay */}
+  return (
+    <section className="relative md:min-h-screen overflow-hidden bg-background">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-radial opacity-50" />
+      <div className="absolute top-1/3 right-0 w-[700px] h-[700px] rounded-full bg-primary/5 blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-primary/3 blur-3xl" />
       <div className="absolute inset-0 grain" />
 
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-0 items-center min-h-screen pt-24">
-          {/* Left Content */}
-          <div className="relative space-y-10 lg:pr-12">
-            {/* Eyebrow */}
-            
+      <div className="relative z-10 container mx-auto px-6 lg:px-12 py-20 md:min-h-screen flex items-center">
+        {/* MOBILE LAYOUT */}
+        <div className="w-full flex flex-col items-center lg:hidden">
+          {/* Floating Image */}
+          <div className="relative w-full flex justify-center pt-24 pb-10">
+            <div className="absolute inset-0 bg-primary/20 blur-[140px] rounded-full scale-75" />
+            <img
+              src={heroShoe}
+              alt="Premium luxury sneaker"
+              className="w-full max-w-xs object-contain drop-shadow-2xl animate-float"
+            />
+          </div>
 
-            {/* Headline */}
-            <div className="overflow-hidden">
-              <h1
-                className="
-        font-display
-        text-[3.2rem] md:text-[5rem] lg:text-[6.5rem]
-        leading-[0.92]
-        text-foreground
-        
-      "
-                style={{ animationDelay: "0.1s" }}
-              >
-                Crafted
-                <br />
-                <span className="italic text-primary tracking-tight">
-                  Excellence
-                </span>
-              </h1>
-            </div>
+          {/* Stats – Horizontal */}
+          <div className="flex justify-center gap-10 mb-10">
+            {[
+              { value: "150+", label: "Artisans" },
+              { value: "25", label: "Years" },
+              { value: "50K+", label: "Clients" },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <p className="font-display text-2xl text-foreground">
+                  {stat.value}
+                </p>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
 
-            {/* Description */}
-            <div className="overflow-hidden">
-              <p
-                className="
-        font-body
-        text-muted-foreground
-        text-base md:text-lg
-        max-w-md
-        leading-relaxed
-        
-      "
-                style={{ animationDelay: "0.2s" }}
-              >
-                Where timeless craftsmanship meets contemporary design. Each
-                pair tells a story of dedication and artistry.
-              </p>
-            </div>
+          {/* Price */}
+          <div className="text-center mb-6">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+              Starting at
+            </p>
+            <p className="font-display text-3xl text-foreground">$890</p>
+          </div>
 
-            {/* Actions */}
-            <div
-              className="flex flex-wrap gap-6 "
-              style={{ animationDelay: "0.3s" }}
+          {/* Actions */}
+          <div className="w-full max-w-xs flex flex-col gap-4">
+            <Button
+              onClick={() => navigate("/collections")}
+              variant="hero"
+              size="lg"
+              className="w-full group"
             >
+              Explore Collection
+              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+            </Button>
+
+            <Button
+              onClick={() => navigate("/story")}
+              variant="outline"
+              size="lg"
+              className="w-full border-white/20 hover:border-white/40 hover:bg-white/5"
+            >
+              Our Story
+            </Button>
+          </div>
+        </div>
+
+        {/* DESKTOP LAYOUT */}
+        <div className="hidden lg:grid w-full grid-cols-[1fr_auto_1fr] items-center">
+          {/* LEFT – STATS */}
+          <div className="flex flex-col gap-10 items-start">
+            {[
+              { value: "150+", label: "Artisans" },
+              { value: "25", label: "Years" },
+              { value: "50K+", label: "Clients" },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <p className="font-display text-3xl text-foreground">
+                  {stat.value}
+                </p>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* CENTER – PRODUCT */}
+          <div className="relative group flex items-center justify-center px-8">
+            <div className="absolute inset-0 bg-primary/20 blur-[140px] rounded-full scale-75" />
+            <img
+              src={heroShoe}
+              alt="Premium luxury sneaker"
+              className="w-full max-w-3xl object-contain drop-shadow-2xl animate-float"
+            />
+            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+            <div className="absolute  bottom-10 opacity-0 group-hover:opacity-100 transition-opacity transition-duration-700 ease-in-out flex  gap-4">
               <Button variant="hero" size="lg" className="group">
                 Explore Collection
                 <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
@@ -72,74 +115,31 @@ const HeroSection = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="
-        border-white/20
-        text-foreground
-        hover:border-white/40
-        hover:bg-white/5
-      "
+                className="border-white/20 hover:border-white/40 hover:bg-white/5"
               >
                 Our Story
               </Button>
             </div>
-
-            {/* Stats */}
-            <div
-              className="
-      flex gap-14 pt-10
-      
-    "
-              style={{ animationDelay: "0.4s" }}
-            >
-              {[
-                { value: "150+", label: "Artisans" },
-                { value: "25", label: "Years" },
-                { value: "50K+", label: "Clients" },
-              ].map((stat) => (
-                <div key={stat.label} className="space-y-1">
-                  <p className="font-display text-4xl text-foreground tracking-tight">
-                    {stat.value}
-                  </p>
-                  <p className="text-[0.65rem] text-muted-foreground uppercase tracking-[0.25em]">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </div>
           </div>
 
-          {/* Right Content - Hero Image */}
-          <div className="relative flex items-center justify-center lg:justify-end">
-            <div className="relative">
-              {/* Glow Effect */}
-              <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full scale-75" />
-
-              {/* Main Image */}
-              <div className="relative animate-float">
-                <img
-                  src={heroShoe}
-                  alt="Premium luxury sneaker"
-                  className="w-full max-w-xl lg:max-w-2xl object-contain drop-shadow-2xl"
-                />
-              </div>
-
-              {/* Decorative Elements */}
-              <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-
-              {/* Price Tag */}
-              <div className="absolute -right-4 top-1/4 bg-charcoal border border-border/30 p-4 backdrop-blur-sm">
-                <p className="text-xs text-muted-foreground uppercase tracking-wider">
-                  Starting at
-                </p>
-                <p className="font-display text-2xl text-foreground">$890</p>
-              </div>
+          {/* RIGHT – ACTIONS */}
+          <div className="flex flex-col items-end gap-10">
+            <div className="text-right">
+              <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+                Starting at
+              </p>
+              <p className="font-display text-3xl text-foreground">$890</p>
             </div>
+
+            <blockquote className="text-right max-w-[220px] text-sm italic text-muted-foreground leading-relaxed">
+              Designed to be worn, crafted to endure.
+            </blockquote>
           </div>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2">
         <span className="text-xs uppercase tracking-widest text-muted-foreground">
           Scroll
         </span>
