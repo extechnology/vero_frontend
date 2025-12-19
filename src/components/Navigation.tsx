@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
-  { label: "Collection", href: "/collections" },
+  { label: "Home", href: "/" },
   { label: "Story", href: "/story" },
-  { label: "Craftsmanship", href: "/#craftsmanship" },
+  { label: "Collection", href: "/collections" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -89,12 +89,12 @@ const Navigation = () => {
 
           {/* Actions */}
           <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="relative">
+            {/* <Button variant="ghost" size="icon" className="relative">
               <ShoppingBag className="w-5 h-5" />
               <span className="absolute -top-1 -right-1 w-4 h-4 bg-primary text-primary-foreground text-[10px] flex items-center justify-center">
                 0
               </span>
-            </Button>
+            </Button> */}
 
             {/* Mobile Menu Toggle */}
             <button

@@ -84,13 +84,13 @@ const ProductCard = ({ product, index }: { product: typeof products[0]; index: n
         )}
 
         {/* Wishlist Button */}
-        <button
+        {/* <button
           className={`absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-charcoal/80 backdrop-blur-sm border border-border/30 transition-all duration-300 hover:border-primary hover:text-primary ${
             isHovered ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
           }`}
         >
           <Heart className="w-4 h-4" />
-        </button>
+        </button> */}
 
         {/* Quick View Button */}
         <div

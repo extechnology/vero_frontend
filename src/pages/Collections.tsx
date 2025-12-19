@@ -49,11 +49,11 @@ const ProductCard = ({ product }: { product: typeof allProducts[0] }) => {
           </div>
         )}
 
-        <button
+        {/* <button
           className={`absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-charcoal/80 backdrop-blur-sm border border-border/30 transition-all duration-300 hover:border-primary hover:text-primary ${isHovered ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"}`}
         >
           <Heart className="w-4 h-4" />
-        </button>
+        </button> */}
 
         <div className={`absolute bottom-4 left-4 right-4 transition-all duration-500 ${isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
           <button className="w-full bg-foreground text-background py-3 text-sm uppercase tracking-widest font-body hover:bg-primary hover:text-primary-foreground transition-colors duration-300 flex items-center justify-center gap-2">
