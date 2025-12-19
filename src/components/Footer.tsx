@@ -121,7 +121,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-primary" />
-                <span className="text-sm text-muted-foreground font-body">hello@luxestride.com</span>
+                <span className="text-sm text-muted-foreground font-body">hello@vero.com</span>
               </li>
             </ul>
           </div>
@@ -130,7 +130,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-border/20 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted-foreground font-body">
-            © 2025 LUXE Stride. All rights reserved.
+            © 2025 VERO. All rights reserved.
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-300 font-body">

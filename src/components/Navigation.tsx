@@ -48,10 +48,7 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <span className="font-display text-2xl lg:text-3xl tracking-tight text-foreground group-hover:text-primary transition-colors duration-300">
-              LUXE
-            </span>
-            <span className="text-primary font-display italic text-lg lg:text-xl">
-              Stride
+              VERO
             </span>
           </Link>
 
