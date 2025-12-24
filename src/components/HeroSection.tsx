@@ -32,9 +32,9 @@ const HeroSection = () => {
             {/* Stats */}
             <div className="flex gap-10">
               {[
-                { value: "150+", label: "Artisans" },
-                { value: "25", label: "Years" },
-                { value: "50K+", label: "Clients" },
+                { value: "1800+", label: "Articles" },
+                { value: "3240+", label: "Collections" },
+                { value: "15+", label: "Years" },
               ].map((stat) => (
                 <div key={stat.label}>
                   <p className="font-display text-2xl text-foreground">
@@ -127,14 +127,14 @@ const HeroSection = () => {
           {/* RIGHT – ACTIONS */}
           <div className="flex flex-col items-end gap-10">
             <div className="text-right">
-              <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                Starting at
+              <p className="text-md uppercase tracking-[0.3em] text-muted-foreground">
+                + 27 Lk
               </p>
-              <p className="font-display text-3xl text-foreground">$890</p>
+              <p className="font-display text-3xl text-foreground">PR Delivery</p>
             </div>
 
             <blockquote className="text-right max-w-[220px] text-sm italic text-muted-foreground leading-relaxed">
-              Designed to be worn, crafted to endure.
+              Not just footwear. A statement beneath your feet.
             </blockquote>
           </div>
         </div>

@@ -119,7 +119,7 @@ const Navigation = () => {
                 key={link.label}
                 href={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className="block py-4 font-display text-3xl text-foreground hover:text-primary transition-colors border-b border-border/20"
+                className="block py-4 font-display text-3xl text-gray-700 hover:text-primary transition-colors border-b border-border/20"
               >
                 {link.label}
               </a>
@@ -128,7 +128,7 @@ const Navigation = () => {
                 key={link.label}
                 to={link.href}
                 onClick={() => setIsOpen(false)}
-                className="block py-4 font-display text-3xl text-foreground hover:text-primary transition-colors border-b border-border/20"
+                className="block py-4 font-display text-3xl text-gray-400  hover:text-primary transition-colors border-b border-border/20"
               >
                 {link.label}
               </Link>

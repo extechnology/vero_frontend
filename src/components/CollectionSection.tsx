@@ -9,33 +9,33 @@ import { Link } from "react-router-dom";
 const products = [
   {
     id: 1,
-    name: "Arctic Blanc",
-    category: "High-Top Collection",
-    price: 1290,
+    name: "VERO-ThreadCore",
+    category: "AN:VT505",
+    price: 1025,
     image: shoeWhite,
     isNew: true,
   },
   {
     id: 2,
-    name: "Oro Classico",
-    category: "Signature Edition",
-    price: 1590,
+    name: "VERO-ThreadCore",
+    category: "AN:VT505",
+    price: 899,
     image: shoeGold,
     isNew: false,
   },
   {
     id: 3,
-    name: "Bordeaux Elite",
-    category: "Heritage Series",
-    price: 1190,
+    name: "VERO-DuraWeave",
+    category: "AN:VDW8210",
+    price: 899,
     image: shoeBurgundy,
     isNew: true,
   },
   {
     id: 4,
-    name: "Slate Minimal",
-    category: "Essential Line",
-    price: 890,
+    name: "VERO-Luxe Lift",
+    category: "AN:VLT 3120",
+    price: 899,
     image: shoeGrey,
     isNew: false,
   },
@@ -59,7 +59,7 @@ const ProductCard = ({ product, index }: { product: typeof products[0]; index: n
             isHovered ? "opacity-100" : "opacity-0"
           }`}
         />
-        
+
         <img
           src={product.image}
           alt={product.name}
@@ -99,7 +99,10 @@ const ProductCard = ({ product, index }: { product: typeof products[0]; index: n
             isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          <Link to={`/product/${product.id}`} className="w-full bg-foreground text-background py-3 text-sm uppercase tracking-widest font-body hover:bg-primary hover:text-primary-foreground transition-colors duration-300 flex items-center justify-center gap-2">
+          <Link
+            to={`/product/${product.id}`}
+            className="w-full bg-foreground text-background py-3 text-sm uppercase tracking-widest font-body hover:bg-primary hover:text-primary-foreground transition-colors duration-300 flex items-center justify-center gap-2"
+          >
             Quick View
             <ArrowUpRight className="w-4 h-4" />
           </Link>
@@ -115,7 +118,9 @@ const ProductCard = ({ product, index }: { product: typeof products[0]; index: n
           <h3 className="font-display text-xl text-foreground group-hover:text-primary transition-colors duration-300">
             {product.name}
           </h3>
-          <p className="font-body text-foreground">${product.price.toLocaleString()}</p>
+          <p className="font-body text-foreground">
+            ₹ {product.price.toLocaleString()}
+          </p>
         </div>
       </div>
     </article>
@@ -127,7 +132,7 @@ const CollectionSection = () => {
     <section id="collection" className="py-24 lg:py-32 bg-background relative">
       {/* Background Elements */}
       <div className="absolute inset-0 grain" />
-      
+
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
@@ -140,7 +145,8 @@ const CollectionSection = () => {
             </h2>
           </div>
           <p className="text-muted-foreground max-w-md font-body">
-            Each piece in our collection represents months of meticulous design and handcrafted perfection.
+            Featured Products The Collection Designed with patience. Crafted
+            with precision. Perfected over all time
           </p>
         </div>
 
@@ -157,7 +163,9 @@ const CollectionSection = () => {
             href="#"
             className="inline-flex items-center gap-3 text-foreground hover:text-primary transition-colors duration-300 group"
           >
-            <span className="uppercase tracking-widest text-sm font-body">View All Products</span>
+            <span className="uppercase tracking-widest text-sm font-body">
+              View All Products
+            </span>
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
           </a>
         </div>

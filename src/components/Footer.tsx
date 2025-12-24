@@ -48,8 +48,8 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-muted-foreground font-body text-sm leading-relaxed max-w-xs">
-              Crafting extraordinary footwear for those who appreciate the
-              finest things in life.
+              Elevated soles, Elevated standards & Luxury that moves with you,
+              Comfort that stays!
             </p>
             <div className="flex gap-4">
               {[Instagram, Twitter, Facebook].map((Icon, i) => (
@@ -67,7 +67,7 @@ const Footer = () => {
           {/* Shop Links */}
           <div className="space-y-6">
             <h4 className="font-body text-sm uppercase tracking-widest text-foreground">
-              Shop
+              Quick Links
             </h4>
             <ul className="space-y-3">
               {footerLinks.shop.map((link) => (
@@ -84,74 +84,32 @@ const Footer = () => {
           </div>
 
           {/* Company Links */}
-          <div className="space-y-6">
-            <h4 className="font-body text-sm uppercase tracking-widest text-foreground">
-              Company
-            </h4>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.label}>
-                  {link.href.startsWith("/#") ? (
-                    <a
-                      href={link.href}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-body"
-                    >
-                      {link.label}
-                    </a>
-                  ) : (
-                    <Link
-                      to={link.href}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-body"
-                    >
-                      {link.label}
-                    </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Support Links */}
-          <div className="space-y-6">
-            <h4 className="font-body text-sm uppercase tracking-widest text-foreground">
-              Support
-            </h4>
-            <ul className="space-y-3">
-              {footerLinks.support.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    to={link.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-body"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
 
           {/* Contact */}
           <div className="space-y-6">
             <h4 className="font-body text-sm uppercase tracking-widest text-foreground">
               Contact
             </h4>
+            <p className="text-sm text-muted-foreground font-body">
+              VERO is an Initiative of Piumino Footwear
+            </p>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-primary mt-0.5" />
                 <span className="text-sm text-muted-foreground font-body">
-                  Florence, Italy
+                  15/617, KASHAYAPADI, <br /> FEROKE, Kozhikode, Kerala, 673631
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-primary" />
                 <span className="text-sm text-muted-foreground font-body">
-                  +39 055 123 4567
+                  +91 858 901 0885
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-primary" />
                 <span className="text-sm text-muted-foreground font-body">
-                  hello@vero.com
+                  verofootwears@gmail.com
                 </span>
               </li>
             </ul>
@@ -162,6 +120,9 @@ const Footer = () => {
         <div className="mt-16 pt-8 border-t border-border/20 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted-foreground font-body">
             © 2025 VERO. All rights reserved.
+          </p>
+          <p className="text-xs text-muted-foreground font-body">
+            Our Parent Company name is Piumino Footwear
           </p>
           <div className="flex gap-6">
             <a

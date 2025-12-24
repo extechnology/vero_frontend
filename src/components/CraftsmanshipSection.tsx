@@ -1,31 +1,39 @@
-import { Sparkles, Scissors, Award, Leaf } from "lucide-react";
+import { Sparkles, Scissors, Award, Leaf, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const features = [
   {
     icon: Scissors,
-    title: "Hand-Cut Leather",
-    description: "Each piece is precision-cut by master craftsmen using time-honored techniques.",
+    title: "Prime Materials",
+    description:
+      "Crafted using carefully selected, high-grade materials to ensure durability, strength, and a refined finish.",
   },
   {
     icon: Sparkles,
-    title: "Premium Materials",
-    description: "We source only the finest Italian leather and sustainable materials.",
+    title: "Elegant Design",
+    description:
+      "Thoughtfully designed with a balance of modern aesthetics and timeless appeal, reflecting premium craftsmanship",
   },
   {
     icon: Award,
-    title: "Lifetime Quality",
-    description: "Built to last generations with our industry-leading craftsmanship guarantee.",
+    title: "Ultimate Perfection",
+    description:
+      "Every pair is finished with precision and strict quality checks, delivering consistency and excellence in every detail.",
   },
   {
     icon: Leaf,
-    title: "Sustainable Luxury",
-    description: "Eco-conscious production methods without compromising on excellence.",
+    title: "Comfirtability for All",
+    description:
+      "Engineered for all-day comfort, offering superior fit, flexibility, and support with every step.",
   },
 ];
 
 const CraftsmanshipSection = () => {
   return (
-    <section id="craftsmanship" className="py-24 lg:py-32 bg-background relative overflow-hidden">
+    <section
+      id="craftsmanship"
+      className="py-24 lg:py-32 bg-background relative overflow-hidden"
+    >
       {/* Background Elements */}
       <div className="absolute inset-0 grain" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/3 blur-3xl" />
@@ -34,16 +42,16 @@ const CraftsmanshipSection = () => {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
           <p className="text-primary uppercase tracking-[0.3em] text-sm font-body">
-            The Art of Making
+            ALWAYS PRIOR FOR QUALITY
           </p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground">
+          {/* <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground">
             Uncompromising
             <br />
             <span className="italic text-primary">Craftsmanship</span>
           </h2>
           <p className="text-muted-foreground font-body max-w-xl mx-auto">
             Every detail matters. From the first sketch to the final polish, our artisans pour their soul into every creation.
-          </p>
+          </p> */}
         </div>
 
         {/* Features Grid */}
@@ -70,12 +78,28 @@ const CraftsmanshipSection = () => {
         {/* Bottom Quote */}
         <div className="mt-24 text-center">
           <blockquote className="font-display text-2xl md:text-3xl lg:text-4xl text-foreground italic max-w-4xl mx-auto">
-            "We don't follow trends. We create
-            <span className="text-primary"> timeless pieces</span> that define generations."
+            "Luxury In Motion, Stability At Every Turn, &
+            <span className="text-primary"> We Made To Endure</span> Designed To
+            Impress.."
           </blockquote>
-          <p className="mt-6 text-sm text-muted-foreground uppercase tracking-widest">
-            — Marco Bellini, Founder
-          </p>
+          <Link
+            to="/collections"
+            className="
+    group inline-flex items-center gap-3 mt-6
+    font-body text-sm uppercase tracking-widest
+    text-foreground/80 hover:text-foreground
+    transition-colors duration-300
+  "
+          >
+            <span className="relative">
+              Explore Your Passion
+              <span className="absolute left-0 -bottom-1 h-[1px] w-full bg-primary scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100" />
+            </span>
+
+            <span className="flex items-center justify-center w-8 h-8 rounded-full border border-foreground/20 group-hover:border-primary transition-colors duration-300">
+              <ArrowRight className="w-4 h-4 text-foreground/70 group-hover:text-primary transition-colors duration-300" />
+            </span>
+          </Link>
         </div>
       </div>
     </section>
