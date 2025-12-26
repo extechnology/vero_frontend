@@ -5,18 +5,59 @@ import { ArrowRight } from "lucide-react";
 import heroShoe from "@/assets/hero-shoe.jpg";
 
 const milestones = [
-  { year: "1999", title: "The Beginning", description: "Founded in Florence by Marco Bellini with a vision to create timeless footwear." },
-  { year: "2005", title: "First Flagship", description: "Opened our first flagship store on Via de' Tornabuoni, Florence's luxury shopping street." },
-  { year: "2012", title: "Global Expansion", description: "Expanded to 15 countries with exclusive boutiques in Paris, London, and New York." },
-  { year: "2018", title: "Sustainability Pledge", description: "Committed to 100% sustainable practices and ethically sourced materials." },
-  { year: "2024", title: "The Future", description: "Celebrating 25 years of excellence with our most innovative collection yet." },
+  {
+    year: "2010",
+    title: "Foundation & Early Growth",
+    description:
+      "Established in 2010 as Puimino Footwear, the company began manufacturing and distributing quality footwear. During this phase, focus remained on building infrastructure, expanding production capacity, and strengthening market presence.",
+  },
+  {
+    year: "2015",
+    title: "Expansion and Product Development",
+    description:
+      "With steady growth, the company expanded its product range by continuously increasing articles. Significant improvements were made in manufacturing processes, material selection, and design standards to meet evolving customer expectations.",
+  },
+  {
+    year: "2020",
+    title: "Quality Excellence and Brand Trust",
+    description:
+      "This phase marked a strong emphasis on quality enhancement and design refinement. Through consistent performance and reliability, Puimino Footwear earned recognition as a trusted brand in the footwear segment.",
+  },
+  {
+    year: "2025",
+    title: "Birth of a Premium Vision",
+    description:
+      "Building on years of expertise, the company identified the need for a premium offering. Advanced craftsmanship, refined designs, and superior comfort standards laid the foundation for a new premium identity.",
+  },
+  {
+    year: "Present",
+    title: "Launch of VERO - Premium Footwear",
+    description:
+      "The premium brand VERO was introduced to deliver elevated footwear experiences for those who deserve the best. VERO represents innovation, trust, superior quality, and refined design, redefining premium footwear standards..",
+  },
 ];
 
 const values = [
-  { title: "Craftsmanship", description: "Every stitch is placed with intention. Our artisans spend 72+ hours on each pair, ensuring perfection." },
-  { title: "Heritage", description: "Rooted in Florentine tradition, we honor centuries-old techniques passed down through generations." },
-  { title: "Innovation", description: "We blend timeless methods with cutting-edge design to create footwear for the modern connoisseur." },
-  { title: "Sustainability", description: "Luxury should not cost the earth. We source responsibly and craft to last generations." },
+  {
+    title: "Ensuring Quality",
+    description:
+      "Ensures Uncompromising Quality Through Meticulous Craftsmanship, Premium Materials, And Strict Quality Standards In Every Pair.",
+  },
+  {
+    title: "Innovative Designs",
+    description:
+      "Our Designs Blend Modern Aesthetics With Expert Craftsmanship, Creating Footwear That Stands Out For Style, Comfort, And Functionality",
+  },
+  {
+    title: "Personal Care",
+    description:
+      "Cares For Every Foot With Thoughtfully Crafted Footwear, Offering Superior Comfort, Support, And A Perfect Fit In Every Step",
+  },
+  {
+    title: "Trust On Brand",
+    description:
+      "Earned Lasting Trust Through Consistent Quality, Reliable Craftsmanship, And A Commitment To Excellence In Every Pair.”",
+  },
 ];
 
 const Story = () => {
@@ -34,20 +75,30 @@ const Story = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <p className="text-primary uppercase tracking-[0.3em] text-sm font-body animate-fade-in">
-                Est. 1999 — Florence, Italy
+                Est. 2010 — India
               </p>
-              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-foreground leading-[0.9] animate-fade-in" style={{ animationDelay: "0.1s" }}>
+              <h1
+                className="font-display text-5xl md:text-6xl lg:text-7xl text-foreground leading-[0.9] animate-fade-in"
+                style={{ animationDelay: "0.1s" }}
+              >
                 A Legacy of
                 <br />
-                <span className="italic text-primary">Timeless Craft</span>
+                <span className="italic text-primary"> Comfort for All</span>
               </h1>
-              <p className="text-muted-foreground font-body text-lg max-w-md animate-fade-in" style={{ animationDelay: "0.2s" }}>
-                For 25 years, we've dedicated ourselves to a singular pursuit: creating footwear 
-                that transcends trends and becomes part of your story.
+              <p
+                className="text-muted-foreground font-body text-lg max-w-md animate-fade-in"
+                style={{ animationDelay: "0.2s" }}
+              >
+                For 15+ years, we've dedicated ourselves to a singular pursuit,
+                creating footwear that transcends trends and becomes part of
+                your story.
               </p>
             </div>
 
-            <div className="relative animate-fade-in-right" style={{ animationDelay: "0.3s" }}>
+            <div
+              className="relative animate-fade-in-right"
+              style={{ animationDelay: "0.3s" }}
+            >
               <div className="absolute inset-0 bg-primary/10 blur-[80px] rounded-full" />
               <img
                 src={heroShoe}
@@ -63,19 +114,18 @@ const Story = () => {
       <section className="py-24 lg:py-32 bg-charcoal relative overflow-hidden">
         <div className="absolute inset-0 grain" />
         <div className="absolute left-0 top-0 w-px h-full bg-gradient-to-b from-transparent via-primary/30 to-transparent" />
-        
+
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <div className="w-20 h-px bg-primary mx-auto mb-12" />
             <blockquote className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground italic leading-tight">
-              "We don't make shoes. We craft
-              <span className="text-primary"> companions for life's journey</span>—
-              pieces that grow more beautiful with every step."
+              "Vero stands for
+              <span className="text-primary">
+                {" "}
+                timeless design and trusted craftsmanship,
+              </span>
+              creating footwear that delivers confidence with every step"
             </blockquote>
-            <div className="mt-12">
-              <p className="font-display text-xl text-foreground">Marco Bellini</p>
-              <p className="text-sm text-muted-foreground uppercase tracking-widest mt-2 font-body">Founder & Master Craftsman</p>
-            </div>
             <div className="w-20 h-px bg-primary mx-auto mt-12" />
           </div>
         </div>
@@ -84,7 +134,7 @@ const Story = () => {
       {/* Our Values */}
       <section className="py-24 lg:py-32 bg-background relative">
         <div className="absolute inset-0 grain" />
-        
+
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="text-center mb-20">
             <p className="text-primary uppercase tracking-[0.3em] text-sm font-body mb-4">
@@ -124,7 +174,7 @@ const Story = () => {
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="text-center mb-20">
             <p className="text-primary uppercase tracking-[0.3em] text-sm font-body mb-4">
-              25 Years of Excellence
+              15 Years of Excellence
             </p>
             <h2 className="font-display text-4xl md:text-5xl text-foreground">
               Our <span className="italic text-primary">Journey</span>
@@ -147,9 +197,17 @@ const Story = () => {
                   <div className="absolute left-8 lg:left-1/2 w-4 h-4 -translate-x-1/2 bg-primary rounded-full border-4 border-background" />
 
                   {/* Content */}
-                  <div className={`flex-1 pl-20 lg:pl-0 ${index % 2 === 0 ? "lg:text-right lg:pr-20" : "lg:pl-20"}`}>
-                    <span className="font-display text-5xl text-primary/30">{milestone.year}</span>
-                    <h3 className="font-display text-2xl text-foreground mt-2">{milestone.title}</h3>
+                  <div
+                    className={`flex-1 pl-20 lg:pl-0 ${
+                      index % 2 === 0 ? "lg:text-right lg:pr-20" : "lg:pl-20"
+                    }`}
+                  >
+                    <span className="font-display text-5xl text-primary/30">
+                      {milestone.year}
+                    </span>
+                    <h3 className="font-display text-2xl text-foreground mt-2">
+                      {milestone.title}
+                    </h3>
                     <p className="text-muted-foreground font-body mt-2 max-w-md mx-auto lg:mx-0">
                       {milestone.description}
                     </p>
@@ -170,10 +228,12 @@ const Story = () => {
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10 text-center">
           <h2 className="font-display text-4xl md:text-5xl text-foreground mb-6">
-            Begin Your <span className="italic text-primary">Journey</span>
+            Experience Our <span className="italic text-primary">Legacy</span>
           </h2>
           <p className="text-muted-foreground font-body max-w-xl mx-auto mb-10">
-            Discover the collection that has captivated discerning individuals across the globe.
+            A Reflection Of Years Of Craftsmanship, Trusted Quality, And Refined
+            Design, Crafted To Deliver Premium Comfort And Confidence In Every
+            Step
           </p>
           <Button variant="hero" size="lg" asChild>
             <a href="/collections">

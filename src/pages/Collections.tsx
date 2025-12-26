@@ -20,7 +20,7 @@ const allProducts = [
   { id: 8, name: "Midnight Gold", category: "Limited Edition", price: 2190, image: shoeGold, isNew: true, collection: "Limited" },
 ];
 
-const categories = ["All", "Signature", "Heritage", "Essential", "Limited"];
+const categories = ["All", "THREADCORE", "DURAWEAVE", "LUXELIFT"];
 
 const ProductCard = ({ product }: { product: typeof allProducts[0] }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -87,23 +87,31 @@ const Collections = () => {
   return (
     <main className="min-h-screen bg-background">
       <Navigation />
-      
+
       {/* Hero Banner */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-radial opacity-50" />
         <div className="absolute inset-0 grain" />
-        
+
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="max-w-3xl">
             <p className="text-primary uppercase tracking-[0.3em] text-sm font-body mb-4 animate-fade-in">
               Curated Selection
             </p>
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-foreground leading-[0.9] animate-fade-in" style={{ animationDelay: "0.1s" }}>
+            <h1
+              className="font-display text-5xl md:text-6xl lg:text-7xl text-foreground leading-[0.9] animate-fade-in"
+              style={{ animationDelay: "0.1s" }}
+            >
               The
               <span className="italic text-primary"> Collection</span>
             </h1>
-            <p className="mt-6 text-muted-foreground font-body text-lg max-w-xl animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              Each piece represents months of meticulous design, handcrafted by master artisans using the finest materials.
+            <p
+              className="mt-6 text-muted-foreground font-body text-lg max-w-xl animate-fade-in"
+              style={{ animationDelay: "0.2s" }}
+            >
+              Showcases premium craftsmanship, refined design, and superior
+              comfort, offering a versatile range of footwear crafted for modern
+              lifestyles, timeless elegance, and confident everyday wear.{" "}
             </p>
           </div>
         </div>
@@ -119,7 +127,9 @@ const Collections = () => {
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
                   className={`text-sm uppercase tracking-widest font-body whitespace-nowrap transition-colors duration-300 ${
-                    activeCategory === cat ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                    activeCategory === cat
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {cat}
@@ -128,7 +138,9 @@ const Collections = () => {
             </div>
             <button className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
               <SlidersHorizontal className="w-4 h-4" />
-              <span className="hidden sm:inline uppercase tracking-widest font-body">Filter</span>
+              <span className="hidden sm:inline uppercase tracking-widest font-body">
+                Filter
+              </span>
             </button>
           </div>
         </div>
@@ -145,7 +157,9 @@ const Collections = () => {
 
           {filteredProducts.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-muted-foreground font-body">No products found in this collection.</p>
+              <p className="text-muted-foreground font-body">
+                No products found in this collection.
+              </p>
             </div>
           )}
         </div>
@@ -156,13 +170,18 @@ const Collections = () => {
         <div className="absolute inset-0 grain" />
         <div className="container mx-auto px-6 lg:px-12 relative z-10 text-center">
           <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-            Can't find what you're looking for?
+            Find The Collections And Explore Premium
           </h2>
           <p className="text-muted-foreground font-body mb-8">
-            Our concierge team is ready to help you find the perfect pair.
+            Refined Design, Superior Comfort, And Trusted Quality, Offering
+            Styles. That Elevate Every Step With Confidence And Timeless
+            Elegance.
           </p>
-          <a href="/contact" className="inline-flex items-center gap-2 text-primary hover:text-gold-light transition-colors uppercase tracking-widest text-sm font-body">
-            Contact Us <ArrowUpRight className="w-4 h-4" />
+          <a
+            href="/contact"
+            className="inline-flex items-center gap-2 text-primary hover:text-gold-light transition-colors uppercase tracking-widest text-sm font-body"
+          >
+            Connect with Us <ArrowUpRight className="w-4 h-4" />
           </a>
         </div>
       </section>

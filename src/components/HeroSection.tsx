@@ -84,9 +84,9 @@ const HeroSection = () => {
           {/* LEFT – STATS */}
           <div className="flex flex-col gap-10 items-start">
             {[
-              { value: "150+", label: "Artisans" },
-              { value: "25", label: "Years" },
-              { value: "50K+", label: "Clients" },
+              { value: "1800+", label: "Articles" },
+              { value: "3240+", label: "Collections" },
+              { value: "15+", label: "Years" },
             ].map((stat) => (
               <div key={stat.label}>
                 <p className="font-display text-3xl text-foreground">
@@ -130,7 +130,9 @@ const HeroSection = () => {
               <p className="text-md uppercase tracking-[0.3em] text-muted-foreground">
                 + 27 Lk
               </p>
-              <p className="font-display text-3xl text-foreground">PR Delivery</p>
+              <p className="font-display text-3xl text-foreground">
+                PR Delivery
+              </p>
             </div>
 
             <blockquote className="text-right max-w-[220px] text-sm italic text-muted-foreground leading-relaxed">

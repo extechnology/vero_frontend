@@ -2,7 +2,19 @@ import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { MapPin, Phone, Mail, Clock, ArrowRight, Instagram, Twitter, Facebook } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  ArrowRight,
+  Instagram,
+  Twitter,
+  Facebook,
+  Map,
+} from "lucide-react";
+import emailjs from "emailjs-com";
+
 import { useToast } from "@/hooks/use-toast";
 
 const locations = [
@@ -34,6 +46,8 @@ const locations = [
 
 const Contact = () => {
   const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -43,11 +57,43 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent",
-      description: "Thank you for reaching out. Our concierge team will respond within 24 hours.",
-    });
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setLoading(true);
+    emailjs
+      .send(
+        "service_iomzr5j", // SERVICE ID
+        "template_imd05mm", // TEMPLATE ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        "KQs4jiAigdrmST1A9" // PUBLIC KEY
+      )
+      .then(() => {
+        toast({
+          title: "Message Sent Successfully",
+          description:
+            "Thank you for reaching out. Our team will get back to you shortly.",
+          className:
+            "bg-charcoal border border-primary/30 text-foreground shadow-xl backdrop-blur-md",
+          duration: 4000,
+        });
+
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        alert("Failed to send message.");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -65,14 +111,18 @@ const Contact = () => {
             <p className="text-primary uppercase tracking-[0.3em] text-sm font-body mb-4 animate-fade-in">
               Get in Touch
             </p>
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-foreground leading-[0.9] animate-fade-in" style={{ animationDelay: "0.1s" }}>
+            {/* <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-foreground leading-[0.9] animate-fade-in" style={{ animationDelay: "0.1s" }}>
               We're Here
               <br />
               <span className="italic text-primary">For You</span>
-            </h1>
-            <p className="mt-6 text-muted-foreground font-body text-lg max-w-xl animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              Our dedicated concierge team is ready to assist you with any inquiries, 
-              from finding the perfect pair to personalized styling advice.
+            </h1> */}
+            <p
+              className="mt-6 text-muted-foreground font-body text-lg max-w-xl animate-fade-in"
+              style={{ animationDelay: "0.2s" }}
+            >
+              With Vero To Explore Sales Opportunities And Become A Valued
+              Business Partner, Growing Together Through Premium Footwear,
+              Trusted Quality, And Long-Term Success.
             </p>
           </div>
         </div>
@@ -100,7 +150,9 @@ const Contact = () => {
                       type="text"
                       required
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
                       className="w-full bg-background/50 border border-border/30 px-5 py-4 text-foreground placeholder:text-muted-foreground font-body focus:outline-none focus:border-primary transition-colors duration-300"
                       placeholder="John Doe"
                     />
@@ -113,7 +165,9 @@ const Contact = () => {
                       type="email"
                       required
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
                       className="w-full bg-background/50 border border-border/30 px-5 py-4 text-foreground placeholder:text-muted-foreground font-body focus:outline-none focus:border-primary transition-colors duration-300"
                       placeholder="john@example.com"
                     />
@@ -127,15 +181,29 @@ const Contact = () => {
                   <select
                     required
                     value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, subject: e.target.value })
+                    }
                     className="w-full bg-background/50 border border-border/30 px-5 py-4 text-foreground font-body focus:outline-none focus:border-primary transition-colors duration-300 appearance-none cursor-pointer"
                   >
-                    <option value="" className="bg-charcoal">Select a topic</option>
-                    <option value="product" className="bg-charcoal">Product Inquiry</option>
-                    <option value="order" className="bg-charcoal">Order Support</option>
-                    <option value="styling" className="bg-charcoal">Personal Styling</option>
-                    <option value="wholesale" className="bg-charcoal">Wholesale Partnership</option>
-                    <option value="other" className="bg-charcoal">Other</option>
+                    <option value="" className="bg-charcoal">
+                      Select a topic
+                    </option>
+                    <option value="product" className="bg-charcoal">
+                      Product Inquiry
+                    </option>
+                    <option value="order" className="bg-charcoal">
+                      Order Support
+                    </option>
+                    <option value="styling" className="bg-charcoal">
+                      Personal Styling
+                    </option>
+                    <option value="wholesale" className="bg-charcoal">
+                      Wholesale Partnership
+                    </option>
+                    <option value="other" className="bg-charcoal">
+                      Other
+                    </option>
                   </select>
                 </div>
 
@@ -147,14 +215,16 @@ const Contact = () => {
                     required
                     rows={6}
                     value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
                     className="w-full bg-background/50 border border-border/30 px-5 py-4 text-foreground placeholder:text-muted-foreground font-body focus:outline-none focus:border-primary transition-colors duration-300 resize-none"
                     placeholder="How can we assist you?"
                   />
                 </div>
 
                 <Button variant="hero" size="lg" type="submit">
-                  Send Message
+                  {loading ? "Sending..." : "Send Message"}
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </form>
@@ -164,18 +234,38 @@ const Contact = () => {
             <div className="order-1 lg:order-2 space-y-12">
               <div>
                 <h2 className="font-display text-3xl text-foreground mb-8">
-                  Contact <span className="italic text-primary">Information</span>
+                  Contact{" "}
+                  <span className="italic text-primary">Information</span>
                 </h2>
 
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 flex items-center justify-center border border-primary/30">
+                      <Map className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground uppercase tracking-widest mb-1 font-body">
+                        Address
+                      </p>
+                      <p className="text-foreground hover:text-primary transition-colors font-body">
+                        SADAF ELASTOMERS, PIumino 15/617, <br /> KASHAYAPADI,
+                        FEROKE, Kozhikode, Kerala, 673631
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 flex items-center justify-center border border-primary/30">
                       <Mail className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <p className="text-xs text-muted-foreground uppercase tracking-widest mb-1 font-body">Email</p>
-                      <a href="mailto:concierge@luxestride.com" className="text-foreground hover:text-primary transition-colors font-body">
-                        concierge@luxestride.com
+                      <p className="text-xs text-muted-foreground uppercase tracking-widest mb-1 font-body">
+                        Email
+                      </p>
+                      <a
+                        href="mailto:verofootwears@gmail.com"
+                        className="text-foreground hover:text-primary transition-colors font-body"
+                      >
+                        verofootwears@gmail.com
                       </a>
                     </div>
                   </div>
@@ -185,20 +275,15 @@ const Contact = () => {
                       <Phone className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <p className="text-xs text-muted-foreground uppercase tracking-widest mb-1 font-body">Phone</p>
-                      <a href="tel:+390551234567" className="text-foreground hover:text-primary transition-colors font-body">
-                        +39 055 123 4567
+                      <p className="text-xs text-muted-foreground uppercase tracking-widest mb-1 font-body">
+                        Phone
+                      </p>
+                      <a
+                        href="tel:+918589010885"
+                        className="text-foreground hover:text-primary transition-colors font-body"
+                      >
+                        +91 858 901 0885
                       </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 flex items-center justify-center border border-primary/30">
-                      <Clock className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground uppercase tracking-widest mb-1 font-body">Concierge Hours</p>
-                      <p className="text-foreground font-body">Mon - Fri: 9AM - 9PM CET</p>
                     </div>
                   </div>
                 </div>
@@ -206,7 +291,9 @@ const Contact = () => {
 
               {/* Social */}
               <div>
-                <p className="text-xs text-muted-foreground uppercase tracking-widest mb-4 font-body">Follow Us</p>
+                <p className="text-xs text-muted-foreground uppercase tracking-widest mb-4 font-body">
+                  Follow Us
+                </p>
                 <div className="flex gap-4">
                   {[Instagram, Twitter, Facebook].map((Icon, i) => (
                     <a
@@ -259,12 +346,20 @@ const Contact = () => {
                 <h3 className="font-display text-2xl text-foreground mb-1 group-hover:text-primary transition-colors">
                   {location.city}
                 </h3>
-                <p className="text-muted-foreground font-body text-sm mb-4">{location.country}</p>
+                <p className="text-muted-foreground font-body text-sm mb-4">
+                  {location.country}
+                </p>
 
                 <div className="space-y-3 text-sm">
-                  <p className="text-muted-foreground font-body">{location.address}</p>
-                  <p className="text-muted-foreground font-body">{location.phone}</p>
-                  <p className="text-muted-foreground font-body">{location.hours}</p>
+                  <p className="text-muted-foreground font-body">
+                    {location.address}
+                  </p>
+                  <p className="text-muted-foreground font-body">
+                    {location.phone}
+                  </p>
+                  <p className="text-muted-foreground font-body">
+                    {location.hours}
+                  </p>
                 </div>
 
                 <a

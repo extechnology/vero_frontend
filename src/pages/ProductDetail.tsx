@@ -37,7 +37,21 @@ const products = [
       "Signature gold hardware accents",
       "Dust bag and luxury packaging included",
     ],
-    sizes: [39, 40, 41, 42, 43, 44, 45, 46],
+    sizes: [5, 6, 7, 8, 9, 10, 11],
+    colors: [
+      {
+        name: "Midnight Black",
+        hex: "#0B0B0B",
+      },
+      {
+        name: "Ivory White",
+        hex: "#F5F3EF",
+      },
+      {
+        name: "Cognac Brown",
+        hex: "#7A4A2E",
+      },
+    ],
   },
   {
     id: 2,
@@ -55,7 +69,22 @@ const products = [
       "Natural rubber outsole",
       "Certificate of authenticity included",
     ],
-    sizes: [39, 40, 41, 42, 43, 44, 45],
+    sizes: [5, 6, 7, 8, 9, 10, 11],
+
+    colors: [
+      {
+        name: "Midnight Black",
+        hex: "#0B0B0B",
+      },
+      {
+        name: "Ivory White",
+        hex: "#F5F3EF",
+      },
+      {
+        name: "Cognac Brown",
+        hex: "#7A4A2E",
+      },
+    ],
   },
   {
     id: 3,
@@ -73,7 +102,21 @@ const products = [
       "Antique brass hardware",
       "Numbered limited edition",
     ],
-    sizes: [40, 41, 42, 43, 44, 45, 46],
+    sizes: [5, 6, 7, 8, 9, 10, 11],
+    colors: [
+      {
+        name: "Midnight Black",
+        hex: "#0B0B0B",
+      },
+      {
+        name: "Ivory White",
+        hex: "#F5F3EF",
+      },
+      {
+        name: "Cognac Brown",
+        hex: "#7A4A2E",
+      },
+    ],
   },
   {
     id: 4,
@@ -91,7 +134,21 @@ const products = [
       "Durable Vibram rubber sole",
       "Sustainable packaging",
     ],
-    sizes: [39, 40, 41, 42, 43, 44, 45, 46],
+    sizes: [5, 6, 7, 8, 9, 10, 11],
+    colors: [
+      {
+        name: "Midnight Black",
+        hex: "#0B0B0B",
+      },
+      {
+        name: "Ivory White",
+        hex: "#F5F3EF",
+      },
+      {
+        name: "Cognac Brown",
+        hex: "#7A4A2E",
+      },
+    ],
   },
   {
     id: 5,
@@ -109,7 +166,21 @@ const products = [
       "Matte black hardware",
       "Collector's edition box",
     ],
-    sizes: [40, 41, 42, 43, 44, 45],
+    sizes: [5, 6, 7, 8, 9, 10, 11],
+    colors: [
+      {
+        name: "Midnight Black",
+        hex: "#0B0B0B",
+      },
+      {
+        name: "Ivory White",
+        hex: "#F5F3EF",
+      },
+      {
+        name: "Cognac Brown",
+        hex: "#7A4A2E",
+      },
+    ],
   },
 ];
 
@@ -121,6 +192,8 @@ const ProductDetail = () => {
   const [selectedSize, setSelectedSize] = useState<number | null>(null);
   const [quantity, setQuantity] = useState(1);
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const [selectedColor, setSelectedColor] = useState<string | null>(null);
+
 
   const relatedProducts = products
     .filter((p) => p.id !== product.id)
@@ -186,60 +259,172 @@ const ProductDetail = () => {
             </div>
 
             {/* Product Info */}
-            <div className="lg:sticky lg:top-32 lg:self-start space-y-10">
-  {/* Header */}
-  <div className="space-y-4">
-    <p className="text-primary uppercase tracking-[0.3em] text-sm font-body">
-      {product.collection} Collection
-    </p>
+            <div className="lg:sticky lg:top-32 lg:self-start space-y-8">
+              {/* Header */}
+              <div className="space-y-4">
+                <p className="text-primary uppercase tracking-[0.3em] text-sm font-body">
+                  {product.collection} Collection
+                </p>
+                <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground leading-[0.9]">
+                  {product.name}
+                </h1>
+                <p className="text-muted-foreground uppercase tracking-widest text-sm font-body">
+                  {product.category}
+                </p>
+              </div>
 
-    <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground leading-[0.9]">
-      {product.name}
-    </h1>
+              {/* Price */}
+              <div className="flex items-baseline gap-4">
+                <span className="font-display text-3xl text-foreground">
+                  ${product.price.toLocaleString()}
+                </span>
+                <span className="text-muted-foreground text-sm font-body">
+                  USD
+                </span>
+              </div>
 
-    <p className="text-muted-foreground uppercase tracking-widest text-sm font-body">
-      {product.category}
-    </p>
-  </div>
+              {/* Description */}
+              <p className="text-muted-foreground font-body leading-relaxed">
+                {product.description}
+              </p>
 
-  {/* Price (editorial display) */}
-  <div className="flex items-baseline gap-3">
-    <span className="font-display text-3xl text-foreground">
-      ${product.price.toLocaleString()}
-    </span>
-    <span className="text-muted-foreground text-xs uppercase tracking-widest">
-      USD
-    </span>
-  </div>
+              {/* Color Selector */}
+              <div className="space-y-4">
+                <span className="text-sm font-body uppercase tracking-widest text-foreground">
+                  Select Color
+                </span>
 
-  {/* Description */}
-  <p className="text-muted-foreground font-body leading-relaxed max-w-lg">
-    {product.description}
-  </p>
+                <div className="flex items-center gap-4">
+                  {product.colors.map((color) => {
+                    const isSelected = selectedColor === color.name;
 
-  {/* Craft badges (reframed benefits) */}
-  <div className="grid grid-cols-3 gap-6 pt-6 border-t border-border/20">
-    <div className="text-center space-y-2">
-      <Truck className="w-5 h-5 mx-auto text-primary" />
-      <p className="text-xs font-body text-muted-foreground uppercase tracking-wider">
-        Worldwide Shipping
-      </p>
-    </div>
-    <div className="text-center space-y-2">
-      <RotateCcw className="w-5 h-5 mx-auto text-primary" />
-      <p className="text-xs font-body text-muted-foreground uppercase tracking-wider">
-        Crafted to Last
-      </p>
-    </div>
-    <div className="text-center space-y-2">
-      <Shield className="w-5 h-5 mx-auto text-primary" />
-      <p className="text-xs font-body text-muted-foreground uppercase tracking-wider">
-        Authentic Materials
-      </p>
-    </div>
-  </div>
-</div>
+                    return (
+                      <button
+                        key={color.name}
+                        onClick={() => setSelectedColor(color.name)}
+                        className={`group relative w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300
+            ${
+              isSelected
+                ? "ring-1 ring-primary ring-offset-background scale-105"
+                : "hover:scale-105"
+            }`}
+                      >
+                        {/* Color Swatch */}
+                        <span
+                          className="w-8 h-8 rounded-full border border-border/40"
+                          style={{ backgroundColor: color.hex }}
+                        />
 
+                        {/* Tooltip */}
+                        <span className="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-xs font-body tracking-wide text-muted-foreground">
+                          {color.name}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Size Selector */}
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-body uppercase tracking-widest text-foreground">
+                    Select Size
+                  </span>
+                  <button className="text-sm font-body text-primary hover:text-gold-light transition-colors underline underline-offset-4">
+                    Size Guide
+                  </button>
+                </div>
+                <div className="grid grid-cols-4 gap-2">
+                  {product.sizes.map((size) => (
+                    <button
+                      key={size}
+                      onClick={() => setSelectedSize(size)}
+                      className={`py-3 border transition-all duration-300 font-body text-sm ${
+                        selectedSize === size
+                          ? "border-primary bg-primary text-primary-foreground"
+                          : "border-border/30 text-foreground hover:border-primary/50"
+                      }`}
+                    >
+                      EU {size}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Quantity & Add to Bag */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-4">
+                  {/* Quantity Selector */}
+                  <div className="flex items-center border border-border/30">
+                    <button
+                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                      className="w-12 h-12 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      <Minus className="w-4 h-4" />
+                    </button>
+                    <span className="w-12 text-center font-body text-foreground">
+                      {quantity}
+                    </span>
+                    <button
+                      onClick={() => setQuantity(quantity + 1)}
+                      className="w-12 h-12 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      <Plus className="w-4 h-4" />
+                    </button>
+                  </div>
+
+                  {/* Wishlist Button */}
+                  {/* <button
+                    onClick={() => setIsWishlisted(!isWishlisted)}
+                    className={`w-12 h-12 flex items-center justify-center border transition-all duration-300 ${
+                      isWishlisted
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-border/30 text-muted-foreground hover:border-primary hover:text-primary"
+                    }`}
+                  >
+                    <Heart
+                      className={`w-5 h-5 ${
+                        isWishlisted ? "fill-current" : ""
+                      }`}
+                    />
+                  </button> */}
+                </div>
+
+                {/* Add to Bag Button */}
+                <Button
+                  variant="hero"
+                  className="w-full h-14 text-base"
+                  disabled={!selectedSize || !selectedColor}
+                >
+                  {selectedSize && selectedColor
+                    ? "Enquire Now"
+                    : "Select Size & Color"}
+                </Button>
+              </div>
+
+              {/* Benefits */}
+              <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border/20">
+                <div className="text-center space-y-2">
+                  <Truck className="w-5 h-5 mx-auto text-primary" />
+                  <p className="text-xs font-body text-muted-foreground uppercase tracking-wider">
+                    Free Shipping
+                  </p>
+                </div>
+                <div className="text-center space-y-2">
+                  <RotateCcw className="w-5 h-5 mx-auto text-primary" />
+                  <p className="text-xs font-body text-muted-foreground uppercase tracking-wider">
+                    30-Day Returns
+                  </p>
+                </div>
+                <div className="text-center space-y-2">
+                  <Shield className="w-5 h-5 mx-auto text-primary" />
+                  <p className="text-xs font-body text-muted-foreground uppercase tracking-wider">
+                    2-Year Warranty
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
