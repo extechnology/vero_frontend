@@ -197,20 +197,27 @@ const Story = () => {
                   <div className="absolute left-8 lg:left-1/2 w-4 h-4 -translate-x-1/2 bg-primary rounded-full border-4 border-background" />
 
                   {/* Content */}
+                  {/* Content */}
                   <div
                     className={`flex-1 pl-20 lg:pl-0 ${
-                      index % 2 === 0 ? "lg:text-right lg:pr-20" : "lg:pl-20"
+                      index % 2 === 0
+                        ? "lg:pr-24 lg:flex lg:justify-end"
+                        : "lg:pl-24"
                     }`}
                   >
-                    <span className="font-display text-5xl text-primary/30">
-                      {milestone.year}
-                    </span>
-                    <h3 className="font-display text-2xl text-foreground mt-2">
-                      {milestone.title}
-                    </h3>
-                    <p className="text-muted-foreground font-body mt-2 max-w-md mx-auto lg:mx-0">
-                      {milestone.description}
-                    </p>
+                    <div className="max-w-md text-left">
+                      <span className="font-display text-5xl text-primary/30 block">
+                        {milestone.year}
+                      </span>
+
+                      <h3 className="font-display text-2xl text-foreground mt-2">
+                        {milestone.title}
+                      </h3>
+
+                      <p className="text-muted-foreground font-body mt-2 leading-relaxed">
+                        {milestone.description}
+                      </p>
+                    </div>
                   </div>
 
                   <div className="flex-1" />
