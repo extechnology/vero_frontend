@@ -43,9 +43,7 @@ const Footer = () => {
           {/* Brand Column */}
           <div className="col-span-2 space-y-6">
             <Link to="/" className="flex items-center gap-3">
-              <span className="font-display text-2xl tracking-tight text-foreground">
-                VERO
-              </span>
+              <img src="/vero-logo1.png" className="h-10 w-auto" alt="" />
             </Link>
             <p className="text-muted-foreground font-body text-sm leading-relaxed max-w-xs">
               Elevated soles, Elevated standards & Luxury that moves with you,

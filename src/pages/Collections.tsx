@@ -10,14 +10,42 @@ import heroShoe from "@/assets/hero-shoe.jpg";
 import { Link } from "react-router-dom";
 
 const allProducts = [
-  { id: 1, name: "Arctic Blanc", category: "High-Top", price: 1290, image: shoeWhite, isNew: true, collection: "Signature" },
-  { id: 2, name: "Oro Classico", category: "Signature Edition", price: 1590, image: shoeGold, isNew: false, collection: "Signature" },
-  { id: 3, name: "Bordeaux Elite", category: "Heritage Series", price: 1190, image: shoeBurgundy, isNew: true, collection: "Heritage" },
-  { id: 4, name: "Slate Minimal", category: "Essential Line", price: 890, image: shoeGrey, isNew: false, collection: "Essential" },
-  { id: 5, name: "Noir Supreme", category: "Signature Edition", price: 1490, image: heroShoe, isNew: true, collection: "Signature" },
-  { id: 6, name: "Pearl Luxe", category: "Essential Line", price: 990, image: shoeWhite, isNew: false, collection: "Essential" },
-  { id: 7, name: "Copper Dawn", category: "Heritage Series", price: 1350, image: shoeBurgundy, isNew: false, collection: "Heritage" },
-  { id: 8, name: "Midnight Gold", category: "Limited Edition", price: 2190, image: shoeGold, isNew: true, collection: "Limited" },
+  {
+    id: 1,
+    name: "VERO-ThreadCore",
+    category: "AN:VT505",
+    price: 1025,
+    image: shoeWhite,
+    isNew: true,
+    collection: "THREADCORE",
+  },
+  {
+    id: 2,
+    name: "VERO-ThreadCore",
+    category: "AN:VT505",
+    price: 899,
+    image: shoeGold,
+    isNew: false,
+    collection: "THREADCORE",
+  },
+  {
+    id: 3,
+    name: "VERO-DuraWeave",
+    category: "AN:VDW8210",
+    price: 899,
+    image: shoeBurgundy,
+    isNew: true,
+    collection: "DURAWEAVE",
+  },
+  {
+    id: 4,
+    name: "VERO-Luxe Lift",
+    category: "AN:VLT 3120",
+    price: 899,
+    image: shoeGrey,
+    isNew: false,
+    collection: "LUXELIFT",
+  },
 ];
 
 const categories = ["All", "THREADCORE", "DURAWEAVE", "LUXELIFT"];
@@ -32,15 +60,25 @@ const ProductCard = ({ product }: { product: typeof allProducts[0] }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative aspect-[3/4] overflow-hidden bg-charcoal">
-        <div className={`absolute inset-0 bg-primary/10 transition-opacity duration-500 ${isHovered ? "opacity-100" : "opacity-0"}`} />
-        
+        <div
+          className={`absolute inset-0 bg-primary/10 transition-opacity duration-500 ${
+            isHovered ? "opacity-100" : "opacity-0"
+          }`}
+        />
+
         <img
           src={product.image}
           alt={product.name}
-          className={`w-full h-full object-cover transition-all duration-700 ${isHovered ? "scale-110" : "scale-100"}`}
+          className={`w-full h-full object-cover transition-all duration-700 ${
+            isHovered ? "scale-110" : "scale-100"
+          }`}
         />
 
-        <div className={`absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent transition-opacity duration-500 ${isHovered ? "opacity-100" : "opacity-0"}`} />
+        <div
+          className={`absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent transition-opacity duration-500 ${
+            isHovered ? "opacity-100" : "opacity-0"
+          }`}
+        />
 
         {product.isNew && (
           <div className="absolute top-4 left-4">
@@ -56,8 +94,15 @@ const ProductCard = ({ product }: { product: typeof allProducts[0] }) => {
           <Heart className="w-4 h-4" />
         </button> */}
 
-        <div className={`absolute bottom-4 left-4 right-4 transition-all duration-500 ${isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-          <Link to={`/product/${product.id}`} className="w-full bg-foreground text-background py-3 text-sm uppercase tracking-widest font-body hover:bg-primary hover:text-primary-foreground transition-colors duration-300 flex items-center justify-center gap-2">
+        <div
+          className={`absolute bottom-4 left-4 right-4 transition-all duration-500 ${
+            isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+        >
+          <Link
+            to={`/product/${product.id}`}
+            className="w-full bg-foreground text-background py-3 text-sm uppercase tracking-widest font-body hover:bg-primary hover:text-primary-foreground transition-colors duration-300 flex items-center justify-center gap-2"
+          >
             View Details
             <ArrowUpRight className="w-4 h-4" />
           </Link>
@@ -65,12 +110,16 @@ const ProductCard = ({ product }: { product: typeof allProducts[0] }) => {
       </div>
 
       <div className="mt-6 space-y-2">
-        <p className="text-xs text-muted-foreground uppercase tracking-widest">{product.category}</p>
+        <p className="text-xs text-muted-foreground uppercase tracking-widest">
+          {product.category}
+        </p>
         <div className="flex items-center justify-between">
           <h3 className="font-display text-xl text-foreground group-hover:text-primary transition-colors duration-300">
             {product.name}
           </h3>
-          <p className="font-body text-foreground">${product.price.toLocaleString()}</p>
+          <p className="font-body text-foreground">
+            ₹ {product.price.toLocaleString()}
+          </p>
         </div>
       </div>
     </article>

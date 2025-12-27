@@ -47,9 +47,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <span className="font-display text-2xl lg:text-3xl tracking-tight text-foreground group-hover:text-primary transition-colors duration-300">
-              VERO
-            </span>
+            <img src="/vero-logo1.png" className="h-10 w-auto" alt="" />
           </Link>
 
           {/* Desktop Navigation */}

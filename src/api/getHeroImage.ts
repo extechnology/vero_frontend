@@ -7,4 +7,3 @@ const getHeroImg = async() => {
 
 export default getHeroImg;
 
-
