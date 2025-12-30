@@ -312,7 +312,7 @@ const Contact = () => {
       </section>
 
       {/* Boutiques */}
-      <section className="py-24 lg:py-32 bg-background relative">
+      {/* <section className="py-24 lg:py-32 bg-background relative">
         <div className="absolute inset-0 grain" />
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
@@ -372,7 +372,7 @@ const Contact = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </main>

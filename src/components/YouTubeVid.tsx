@@ -1,10 +1,28 @@
 import { useState } from "react";
 import { Play } from "lucide-react";
-
-const VIDEO_ID = "dQw4w9WgXcQ"; // 🔴 replace with your real ID
+import useThumbnail from "@/hooks/useThumbnail";
 
 const StoryVideo = () => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const { thumbnail } = useThumbnail();
+
+  const video = thumbnail?.[0];
+
+  const getYouTubeId = (url: string) => {
+    try {
+      const parsed = new URL(url);
+      if (parsed.hostname.includes("youtu.be")) {
+        return parsed.pathname.replace("/", "");
+      }
+      return parsed.searchParams.get("v");
+    } catch {
+      return null;
+    }
+  };
+
+  const videoId = video ? getYouTubeId(video.video_url) : null;
+
+  if (!video || !videoId) return null;
 
   return (
     <div className="relative group">
@@ -15,9 +33,9 @@ const StoryVideo = () => {
       <div className="relative aspect-video rounded-3xl overflow-hidden border border-white/10 bg-black shadow-2xl">
         {!isPlaying ? (
           <>
-            {/* Thumbnail */}
+            {/* Thumbnail from BACKEND */}
             <img
-              src={`https://img.youtube.com/vi/${VIDEO_ID}/maxresdefault.jpg`}
+              src={video.image}
               alt="Brand story video"
               className="absolute inset-0 w-full h-full object-cover"
             />
@@ -38,7 +56,7 @@ const StoryVideo = () => {
           </>
         ) : (
           <iframe
-            src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&rel=0&modestbranding=1`}
+            src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&rel=0&modestbranding=1`}
             title="Brand Story Video"
             allow="autoplay; fullscreen; encrypted-media"
             allowFullScreen

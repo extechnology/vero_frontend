@@ -3,6 +3,8 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import heroShoe from "@/assets/hero-shoe.jpg";
+import useAboutImg from "@/hooks/useAboutImg";
+
 
 const milestones = [
   {
@@ -61,6 +63,10 @@ const values = [
 ];
 
 const Story = () => {
+
+  const { aboutImage, isLoading } = useAboutImg();
+  console.log(aboutImage, "aboutImage");
+  const aboutHero = aboutImage?.map((item: any) => item?.image)
   return (
     <main className="min-h-screen bg-background">
       <Navigation />
@@ -100,11 +106,15 @@ const Story = () => {
               style={{ animationDelay: "0.3s" }}
             >
               <div className="absolute inset-0 bg-primary/10 blur-[80px] rounded-full" />
-              <img
-                src={heroShoe}
-                alt="Luxury craftsmanship"
-                className="relative w-full max-w-lg mx-auto object-contain"
-              />
+              {isLoading ? (
+                <div className="w-full max-w-lg mx-auto object-contain animate-pulse" />
+              ) : (
+                <img
+                  src={aboutHero}
+                  alt="Luxury craftsmanship"
+                  className="relative w-full max-w-lg mx-auto object-contain"
+                />
+              )}
             </div>
           </div>
         </div>

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ShoppingBag } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [

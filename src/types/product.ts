@@ -1,0 +1,30 @@
+export interface Product {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+  category: string;
+  sub_category: string;
+  size: string;
+  sub_category_name: string;
+  category_name: string;
+  price: number;
+  product: number;
+  art_number: string;
+  stock: number;
+  selling_price: number;
+  variant_images: string[];
+  color_image: string;
+  color_code: string;
+  variant_image: string;
+  details: string;
+  is_primary: boolean;
+  color: string;
+  color_name: string;
+  size_value: string;
+  material: string;
+  care: string;
+  warranty: string;
+  created_at: string;
+  updated_at: string;
+}

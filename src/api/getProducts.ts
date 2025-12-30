@@ -1,7 +1,7 @@
 import axiosInstance from "./axiosInstance";
 
 const getProducts = async () => {
-    const response = await axiosInstance.get("/products");
+    const response = await axiosInstance.get("/product/");
     return response.data;
 }
 

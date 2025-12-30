@@ -1,7 +1,7 @@
 import axiosInstance from "./axiosInstance";
 
 const getHeroImg = async() => {
-    const response = await axiosInstance.get("/hero-image");
+    const response = await axiosInstance.get("/heroimage/");
     return response.data;
 }
 
