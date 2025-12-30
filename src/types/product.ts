@@ -15,9 +15,10 @@ export interface Product {
   selling_price: number;
   variant_images: string[];
   color_image: string;
+  is_new_arrival:boolean;
   color_code: string;
   variant_image: string;
-  details: string;
+  detail_points: string;
   is_primary: boolean;
   color: string;
   color_name: string;

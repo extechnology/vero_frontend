@@ -4,45 +4,21 @@ import shoeWhite from "@/assets/shoe-white.jpg";
 import shoeGold from "@/assets/shoe-gold.jpg";
 import shoeBurgundy from "@/assets/shoe-burgundy.jpg";
 import shoeGrey from "@/assets/shoe-grey.jpg";
-import { Link } from "react-router-dom";  
+import { Link } from "react-router-dom";
+import useProducts from "@/hooks/useProducts";
+import { Product } from "@/types/product";
 
-const products = [
-  {
-    id: 1,
-    name: "VERO-ThreadCore",
-    category: "AN:VT505",
-    price: 1025,
-    image: shoeWhite,
-    isNew: true,
-  },
-  {
-    id: 2,
-    name: "VERO-ThreadCore",
-    category: "AN:VT505",
-    price: 899,
-    image: shoeGold,
-    isNew: false,
-  },
-  {
-    id: 3,
-    name: "VERO-DuraWeave",
-    category: "AN:VDW8210",
-    price: 899,
-    image: shoeBurgundy,
-    isNew: true,
-  },
-  {
-    id: 4,
-    name: "VERO-Luxe Lift",
-    category: "AN:VLT 3120",
-    price: 899,
-    image: shoeGrey,
-    isNew: false,
-  },
-];
-
-const ProductCard = ({ product, index }: { product: typeof products[0]; index: number }) => {
+const ProductCard = ({
+  product,
+  index,
+}: {
+  product: Product;
+  index: number;
+}) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { data: products } = useProducts();
+  console.log(products, "products");
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   return (
     <article
@@ -61,7 +37,7 @@ const ProductCard = ({ product, index }: { product: typeof products[0]; index: n
         />
 
         <img
-          src={product.image}
+          src={`${backendUrl}${product.image}`}
           alt={product.name}
           className={`w-full h-full object-cover transition-all duration-700 ${
             isHovered ? "scale-110" : "scale-100"
@@ -76,7 +52,7 @@ const ProductCard = ({ product, index }: { product: typeof products[0]; index: n
         />
 
         {/* New Badge */}
-        {product.isNew && (
+        {product.is_new_arrival && (
           <div className="absolute top-4 left-4">
             <span className="bg-primary text-primary-foreground text-[10px] uppercase tracking-widest px-3 py-1.5 font-body">
               New
@@ -111,9 +87,14 @@ const ProductCard = ({ product, index }: { product: typeof products[0]; index: n
 
       {/* Product Info */}
       <div className="mt-6 space-y-2">
-        <p className="text-xs text-muted-foreground uppercase tracking-widest">
-          {product.category}
-        </p>
+        <div className="flex justify-between">
+          <p className="text-xs text-muted-foreground uppercase tracking-widest">
+            {product.art_number}
+          </p>
+          <p className="text-xs text-muted-foreground uppercase tracking-widest">
+            {product.category_name}
+          </p>
+        </div>
         <div className="flex items-center justify-between">
           <h3 className="font-display text-xl text-foreground group-hover:text-primary transition-colors duration-300">
             {product.name}
@@ -128,6 +109,8 @@ const ProductCard = ({ product, index }: { product: typeof products[0]; index: n
 };
 
 const CollectionSection = () => {
+  const { data: products = [] } = useProducts();
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   return (
     <section id="collection" className="py-24 lg:py-32 bg-background relative">
       {/* Background Elements */}

@@ -62,17 +62,14 @@ const ProductDetail = () => {
     variants.find((v) => v.color_name === selectedColor) ||
     variants[0];
 
-
   const displayImage =
     activeVariant?.variant_image || productFromLocation?.image;
 
-
-    const thumbnails = variants.map((v) => ({
-      image: v.variant_image,
-      color: v.color_name,
-      size: v.size_value,
-    }));
-
+  const thumbnails = variants.map((v) => ({
+    image: v.variant_image,
+    color: v.color_name,
+    size: v.size_value,
+  }));
 
   console.log(
     "variant_images length:",
@@ -293,9 +290,17 @@ const ProductDetail = () => {
             <h2 className="font-display text-2xl md:text-3xl text-foreground mb-8">
               Craftsmanship Details
             </h2>
-            {/* <ul className="space-y-4">
-              {product.details}
-            </ul> */}
+            <ul className="space-y-2">
+              {product?.detail_points
+                ?.split("#")
+                .filter(Boolean)
+                .map((point, index) => (
+                  <li key={index} className="flex items-center gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-primary" />
+                    <span>{point.trim()}</span>
+                  </li>
+                ))}
+            </ul>
           </div>
         </div>
       </section>
