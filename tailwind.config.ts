@@ -2,7 +2,12 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -14,8 +19,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Playfair Display', 'serif'],
-        body: ['Syne', 'sans-serif'],
+        display: ["Playfair Display", "serif"],
+        body: ["Syne", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -96,7 +101,7 @@ export default {
           "0%": { transform: "translateY(100%)" },
           "100%": { transform: "translateY(0)" },
         },
-        "float": {
+        float: {
           "0%, 100%": { transform: "translateY(0) rotate(0deg)" },
           "50%": { transform: "translateY(-20px) rotate(2deg)" },
         },
@@ -109,7 +114,7 @@ export default {
         "fade-in-right": "fade-in-right 0.8s ease-out forwards",
         "scale-in": "scale-in 0.6s ease-out forwards",
         "slide-up": "slide-up 0.8s ease-out forwards",
-        "float": "float 6s ease-in-out infinite",
+        float: "float 6s ease-in-out infinite",
       },
     },
   },

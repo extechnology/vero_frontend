@@ -112,7 +112,7 @@ const HeroSection = () => {
                 key={item?.id}
                 src={item?.image}
                 alt="Premium luxury sneaker"
-                className="w-full max-w-xs object-contain drop-shadow-2xl animate-float"
+                className="w-full max-w-4xl object-contain drop-shadow-2xl animate-float"
               />
             ))}
             <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />

@@ -16,32 +16,32 @@ import { FadeUp } from "@/components/animations/FadeUp";
 
 import { useToast } from "@/hooks/use-toast";
 
-const locations = [
-  {
-    city: "Florence",
-    address: "Via de' Tornabuoni, 15",
-    country: "Italy",
-    phone: "+39 055 123 4567",
-    hours: "Mon-Sat: 10AM - 7PM",
-    flagship: true,
-  },
-  {
-    city: "Paris",
-    address: "31 Rue du Faubourg Saint-Honoré",
-    country: "France",
-    phone: "+33 1 42 65 12 34",
-    hours: "Mon-Sat: 10AM - 7PM",
-    flagship: false,
-  },
-  {
-    city: "New York",
-    address: "680 Madison Avenue",
-    country: "USA",
-    phone: "+1 212 555 0123",
-    hours: "Mon-Sat: 10AM - 8PM",
-    flagship: false,
-  },
-];
+// const locations = [
+//   {
+//     city: "Florence",
+//     address: "Via de' Tornabuoni, 15",
+//     country: "Italy",
+//     phone: "+39 055 123 4567",
+//     hours: "Mon-Sat: 10AM - 7PM",
+//     flagship: true,
+//   },
+//   {
+//     city: "Paris",
+//     address: "31 Rue du Faubourg Saint-Honoré",
+//     country: "France",
+//     phone: "+33 1 42 65 12 34",
+//     hours: "Mon-Sat: 10AM - 7PM",
+//     flagship: false,
+//   },
+//   {
+//     city: "New York",
+//     address: "680 Madison Avenue",
+//     country: "USA",
+//     phone: "+1 212 555 0123",
+//     hours: "Mon-Sat: 10AM - 8PM",
+//     flagship: false,
+//   },
+// ];
 
 const Contact = () => {
   const { toast } = useToast();
@@ -112,11 +112,6 @@ const Contact = () => {
                 Get in Touch
               </p>
             </FadeUp>
-            {/* <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-foreground leading-[0.9] animate-fade-in" style={{ animationDelay: "0.1s" }}>
-              We're Here
-              <br />
-              <span className="italic text-primary">For You</span>
-            </h1> */}
             <FadeUp>
               <p
                 className="mt-6 text-muted-foreground font-body text-lg max-w-xl animate-fade-in"
@@ -200,9 +195,9 @@ const Contact = () => {
                       onChange={(e) =>
                         setFormData({ ...formData, subject: e.target.value })
                       }
-                      className="w-full bg-background/50 border border-border/30 px-5 py-4 text-foreground font-body focus:outline-none focus:border-primary transition-colors duration-300 appearance-none cursor-pointer"
+                      className="w-full text-muted-foreground bg-background/50 border border-border/30 px-5 py-4 font-body focus:outline-none focus:border-primary transition-colors duration-300 appearance-none cursor-pointer"
                     >
-                      <option value="" className="bg-charcoal">
+                      <option value="" className="bg-charcoal ">
                         Select a topic
                       </option>
                       <option value="product" className="bg-charcoal">
@@ -318,7 +313,7 @@ const Contact = () => {
                           href="tel:+918589010885"
                           className="text-foreground hover:text-primary transition-colors font-body"
                         >
-                          +91 858 901 0885
+                          +91 85890 10885
                         </a>
                       </div>
                     </FadeUp>

@@ -10,10 +10,10 @@ import { Link } from "react-router-dom";
 
 const footerLinks = {
   shop: [
-    { label: "All Products", href: "/collections" },
-    { label: "New Arrivals", href: "/collections" },
-    { label: "Bestsellers", href: "/collections" },
-    { label: "Limited Edition", href: "/collections" },
+    { label: "Home", href: "/" },
+    { label: "Story", href: "/story" },
+    { label: "Collections", href: "/collections" },
+    { label: "Contact", href: "/contact" },
   ],
   company: [
     { label: "Home", href: "/" },
