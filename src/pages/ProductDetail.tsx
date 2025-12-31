@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Ruler, X } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import useProductVariant from "@/hooks/useProductVariant";
 import useProducts from "@/hooks/useProducts";
 import { FadeUp } from "@/components/animations/FadeUp";
+import { useEffect } from "react";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -14,6 +15,8 @@ const ProductDetail = () => {
   const product = products.find((p) => p.id === Number(id)) || products[0];
   const { productVariant, isLoading } = useProductVariant();
   const [selectedImage, setSelectedImage] = useState(0);
+  const [isSizeChartOpen, setIsSizeChartOpen] = useState(false);
+
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const productFromLocation =
@@ -21,6 +24,7 @@ const ProductDetail = () => {
   const filteredProducts = productVariant?.filter(
     (p) => p.product == Number(id)
   );
+
   const relatedProducts = products
     .filter((p) => p.id !== product.id)
     .slice(0, 3);
@@ -49,9 +53,31 @@ const ProductDetail = () => {
   const displayImage =
     activeVariant?.variant_image || productFromLocation?.image;
 
+  useEffect(() => {
+    if (variants.length && !selectedColor && !selectedSize) {
+      const first = variants[0];
+      setSelectedColor(first.color_name);
+      setSelectedSize(first.size_value);
+    }
+  }, [variants, selectedColor, selectedSize]);
+
   const resolveImage = (url?: string) => {
     if (!url) return "";
     return url.startsWith("http") ? url : backendUrl + url;
+  };
+
+  const handleWhatsAppEnquiry = () => {
+    if (!product?.name) return;
+
+    const phoneNumber = "918589010883"; // include country code, no +
+    const message = `Hi, I am interested in ${product.name}. 
+Color: ${selectedColor}, Size: ${selectedSize}`;
+
+    const encodedMessage = encodeURIComponent(message);
+
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    window.open(whatsappUrl, "_blank");
   };
 
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -225,10 +251,16 @@ const ProductDetail = () => {
                   <span className="text-sm font-body uppercase tracking-widest text-foreground">
                     Select Size
                   </span>
-                  {/* <button className="text-sm font-body text-primary hover:text-gold-light transition-colors underline underline-offset-4">
-                    Size Guide
-                  </button> */}
+
+                  <button
+                    onClick={() => setIsSizeChartOpen(true)}
+                    className="flex items-center gap-2 text-xs uppercase tracking-widest text-muted-foreground hover:text-primary transition"
+                  >
+                    <Ruler className="w-4 h-4" />
+                    Size Chart
+                  </button>
                 </div>
+
                 <div className="grid grid-cols-4 gap-2">
                   {sizesForSelectedColor.map((variant) => (
                     <button
@@ -257,6 +289,7 @@ const ProductDetail = () => {
                   variant="hero"
                   className="w-full h-14"
                   disabled={!selectedColor || !selectedSize}
+                  onClick={handleWhatsAppEnquiry}
                 >
                   {selectedColor && selectedSize
                     ? "Enquire Now"
@@ -348,6 +381,10 @@ const ProductDetail = () => {
           </div>
         </div>
       </section>
+      <SizeChartModal
+        open={isSizeChartOpen}
+        onClose={() => setIsSizeChartOpen(false)}
+      />
 
       <Footer />
     </main>
@@ -355,3 +392,68 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
+
+const SizeChartModal = ({
+  open,
+  onClose,
+}: {
+  open: boolean;
+  onClose: () => void;
+}) => {
+  if (!open) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
+      {/* Backdrop */}
+      <div
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        onClick={onClose}
+      />
+
+      {/* Modal */}
+      <div className="relative w-[92%] max-w-xl rounded-3xl bg-background shadow-2xl border border-border/20">
+        {/* Header */}
+        <div className="flex items-center justify-between px-6 py-4 border-b border-border/20">
+          <h3 className="font-display text-lg tracking-wide">Size Guide</h3>
+          <button onClick={onClose}>
+            <X className="w-5 h-5 text-muted-foreground hover:text-foreground transition" />
+          </button>
+        </div>
+
+        {/* Table */}
+        <div className="p-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-muted-foreground">
+                <th className="py-3 text-left">EU</th>
+                <th className="py-3 text-left">Foot Length (cm)</th>
+                <th className="py-3 text-left">UK</th>
+                <th className="py-3 text-left">US</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                { eu: "6", cm: "24.5", uk: "6", us: "7" },
+                { eu: "7", cm: "25.5", uk: "7", us: "8" },
+                { eu: "8", cm: "26.5", uk: "8", us: "9" },
+                { eu: "9", cm: "27.5", uk: "9", us: "10" },
+              ].map((row) => (
+                <tr key={row.eu} className="border-t border-border/20">
+                  <td className="py-3 font-medium">EU {row.eu}</td>
+                  <td>{row.cm}</td>
+                  <td>{row.uk}</td>
+                  <td>{row.us}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <p className="mt-4 text-xs text-muted-foreground leading-relaxed">
+            Measurements are approximate. If you are between sizes, we recommend
+            choosing the larger size.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};

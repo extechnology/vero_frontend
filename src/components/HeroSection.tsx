@@ -10,7 +10,7 @@ const HeroSection = () => {
   const { heroImage } = useHeroImage();
 
   return (
-    <section className="relative md:min-h-screen overflow-hidden bg-background">
+    <section className="relative  md:min-h-screen overflow-hidden bg-background">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-radial opacity-50" />
       <div className="absolute top-1/3 right-0 w-[700px] h-[700px] rounded-full bg-primary/5 blur-3xl" />
@@ -19,7 +19,7 @@ const HeroSection = () => {
 
       <div className="relative z-10 content-center container mx-auto px-4 lg:px-12  md:min-h-screen flex items-center">
         {/* MOBILE LAYOUT */}
-        <div className="w-full min-h-[100dvh] lg:hidden flex items-center justify-center">
+        <div className="w-full min-h-[90dvh] lg:hidden flex items-center justify-center">
           <div className="flex flex-col items-center text-center gap-10 w-full px-6">
             {/* Floating Image */}
             <div className="relative w-full flex justify-center">
@@ -157,7 +157,7 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2">
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2">
         <span className="text-xs uppercase tracking-widest text-muted-foreground">
           Scroll
         </span>

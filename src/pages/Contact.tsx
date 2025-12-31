@@ -100,7 +100,7 @@ const Contact = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+      <section className="relative pt-28 pb-10 lg:pt-40 lg:pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-radial opacity-50" />
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-primary/5 blur-3xl" />
         <div className="absolute inset-0 grain" />
@@ -310,10 +310,10 @@ const Contact = () => {
                           Phone
                         </p>
                         <a
-                          href="tel:+918589010885"
+                          href="tel:+918589010883"
                           className="text-foreground hover:text-primary transition-colors font-body"
                         >
-                          +91 85890 10885
+                          +91 85890 10883
                         </a>
                       </div>
                     </FadeUp>
