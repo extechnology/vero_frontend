@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import heroShoe from "@/assets/hero-shoe.jpg";
 import { useNavigate } from "react-router-dom";
 import useHeroImage from "@/hooks/useHeroImage";
+import heroShoe from "@/assets/hero-shoe.jpg";
 
 
 const HeroSection = () => {
@@ -24,16 +24,14 @@ const HeroSection = () => {
             {/* Floating Image */}
             <div className="relative w-full flex justify-center">
               <div className="absolute inset-0 bg-primary/20 blur-[140px] rounded-full scale-75" />
-              {
-                heroImage?.map((item) => (
-                  <img
-                    key={item?.id}
-                    src={item?.image}
-                    alt="Premium luxury sneaker"
-                    className="w-full max-w-xs object-contain drop-shadow-2xl animate-float"
-                  />
-                ))
-              }
+              {heroImage?.map((item) => (
+                <img
+                  key={item?.id}
+                  src={item?.image}
+                  alt="Premium luxury sneaker"
+                  className="w-full max-w-xs object-contain drop-shadow-2xl animate-float"
+                />
+              ))}
             </div>
 
             {/* Stats */}
@@ -109,19 +107,28 @@ const HeroSection = () => {
           {/* CENTER – PRODUCT */}
           <div className="relative group flex items-center justify-center px-8">
             <div className="absolute inset-0 bg-primary/20 blur-[140px] rounded-full scale-75" />
-            <img
-              src={heroShoe}
-              alt="Premium luxury sneaker"
-              className="w-full max-w-3xl object-contain drop-shadow-2xl animate-float"
-            />
+            {heroImage?.map((item) => (
+              <img
+                key={item?.id}
+                src={item?.image}
+                alt="Premium luxury sneaker"
+                className="w-full max-w-xs object-contain drop-shadow-2xl animate-float"
+              />
+            ))}
             <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
             <div className="absolute  bottom-10 opacity-0 group-hover:opacity-100 transition-opacity transition-duration-700 ease-in-out flex  gap-4">
-              <Button onClick={() => navigate("/collections")} variant="hero" size="lg" className="group">
+              <Button
+                onClick={() => navigate("/collections")}
+                variant="hero"
+                size="lg"
+                className="group"
+              >
                 Explore Collection
                 <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
               </Button>
 
-              <Button onClick={() => navigate("/story")}
+              <Button
+                onClick={() => navigate("/story")}
                 variant="outline"
                 size="lg"
                 className="border-white/20 hover:border-white/40 hover:bg-white/5"

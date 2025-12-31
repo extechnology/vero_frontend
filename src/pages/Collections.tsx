@@ -1,14 +1,11 @@
 import { useState, useMemo } from "react";
-import { ArrowUpRight, Heart, SlidersHorizontal } from "lucide-react";
+import { ArrowUpRight, SlidersHorizontal } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import shoeWhite from "@/assets/shoe-white.jpg";
-import shoeGold from "@/assets/shoe-gold.jpg";
-import shoeBurgundy from "@/assets/shoe-burgundy.jpg";
-import shoeGrey from "@/assets/shoe-grey.jpg";
 import { Link } from "react-router-dom";
 import useProducts from "@/hooks/useProducts";
 import { Product } from "@/types/product";
+import { FadeUp } from "@/components/animations/FadeUp";
 
 const ProductCard = ({ product }: { product: Product }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -149,56 +146,66 @@ const Collections = () => {
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="max-w-3xl">
-            <p className="text-primary uppercase tracking-[0.3em] text-sm font-body mb-4 animate-fade-in">
-              Curated Selection
-            </p>
-            <h1
-              className="font-display text-5xl md:text-6xl lg:text-7xl text-foreground leading-[0.9] animate-fade-in"
-              style={{ animationDelay: "0.1s" }}
-            >
-              The
-              <span className="italic text-primary"> Collection</span>
-            </h1>
-            <p
-              className="mt-6 text-muted-foreground font-body text-lg max-w-xl animate-fade-in"
-              style={{ animationDelay: "0.2s" }}
-            >
-              Showcases premium craftsmanship, refined design, and superior
-              comfort, offering a versatile range of footwear crafted for modern
-              lifestyles, timeless elegance, and confident everyday wear.{" "}
-            </p>
+            <FadeUp>
+              <p className="text-primary uppercase tracking-[0.3em] text-sm font-body mb-4 animate-fade-in">
+                Curated Selection
+              </p>
+            </FadeUp>
+            <FadeUp>
+              <h1
+                className="font-display text-5xl md:text-6xl lg:text-7xl text-foreground leading-[0.9] animate-fade-in"
+                style={{ animationDelay: "0.1s" }}
+              >
+                The
+                <span className="italic text-primary"> Collection</span>
+              </h1>
+            </FadeUp>
+            <FadeUp>
+              <p
+                className="mt-6 text-muted-foreground font-body text-lg max-w-xl animate-fade-in"
+                style={{ animationDelay: "0.2s" }}
+              >
+                Showcases premium craftsmanship, refined design, and superior
+                comfort, offering a versatile range of footwear crafted for
+                modern lifestyles, timeless elegance, and confident everyday
+                wear.{" "}
+              </p>
+            </FadeUp>
           </div>
         </div>
       </section>
-
       {/* Filter Bar */}
-      <section className="border-y border-border/20 sticky top-20 bg-background/95 backdrop-blur-md z-40">
+      <section className="border-y border-border/20 sticky top-24 bg-background/95 backdrop-blur-md z-40">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between py-4">
-            <div className="flex items-center gap-8 overflow-x-auto pb-2 lg:pb-0">
-              {subCategories?.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveSubCategory(cat)}
-                  className={`text-sm uppercase tracking-widest font-body ${
-                    activeSubCategory === cat
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-            <button
-              onClick={() => setIsFilterOpen(true)}
-              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <SlidersHorizontal className="w-4 h-4" />
-              <span className="hidden sm:inline uppercase tracking-widest font-body">
-                Filter
-              </span>
-            </button>
+            <FadeUp>
+              <div className="flex items-center gap-8 overflow-x-auto pb-2 lg:pb-0">
+                {subCategories?.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveSubCategory(cat)}
+                    className={`text-sm uppercase tracking-widest font-body ${
+                      activeSubCategory === cat
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </FadeUp>
+            <FadeUp>
+              <button
+                onClick={() => setIsFilterOpen(true)}
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <SlidersHorizontal className="w-4 h-4" />
+                <span className="hidden sm:inline uppercase tracking-widest font-body">
+                  Filter
+                </span>
+              </button>
+            </FadeUp>
           </div>
         </div>
       </section>
@@ -213,13 +220,17 @@ const Collections = () => {
 
           {/* Modal */}
           <div className="relative w-full max-w-md bg-background border border-border/40 rounded-2xl shadow-2xl p-8 animate-fade-in">
-            <h3 className="font-display text-2xl mb-6">Filter Products</h3>
+            <FadeUp>
+              <h3 className="font-display text-2xl mb-6">Filter Products</h3>
+            </FadeUp>
 
             {/* Gender */}
             <div className="mb-6">
-              <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">
-                Gender
-              </p>
+              <FadeUp>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">
+                  Gender
+                </p>
+              </FadeUp>
               <div className="flex gap-3">
                 {["All", "Men", "Women"].map((g) => (
                   <button
@@ -239,72 +250,85 @@ const Collections = () => {
 
             {/* Price */}
             <div className="mb-8">
-              <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">
-                Price Range
-              </p>
+              <FadeUp>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">
+                  Price Range
+                </p>
+              </FadeUp>
               <div className="grid grid-cols-2 gap-3">
-                <button
-                  className={`px-4 py-2 text-sm uppercase tracking-widest border ${
-                    priceFilter === "LOW"
-                      ? "border-primary text-primary"
-                      : "border-border text-muted-foreground"
-                  }`}
-                  onClick={() => setPriceFilter("LOW")}
-                >
-                  Below ₹2,000
-                </button>
-                <button
-                  className={`px-4 py-2 text-sm uppercase tracking-widest border ${
-                    priceFilter === "MID"
-                      ? "border-primary text-primary"
-                      : "border-border text-muted-foreground"
-                  }`}
-                  onClick={() => setPriceFilter("MID")}
-                >
-                  ₹2k – ₹5k
-                </button>
-                <button
-                  className={`px-4 py-2 text-sm uppercase tracking-widest border ${
-                    priceFilter === "HIGH"
-                      ? "border-primary text-primary"
-                      : "border-border text-muted-foreground"
-                  }`}
-                  onClick={() => setPriceFilter("HIGH")}
-                >
-                  Above ₹5k
-                </button>
-                <button
-                  className={`px-4 py-2 text-sm uppercase tracking-widest border ${
-                    priceFilter === "All"
-                      ? "border-primary text-primary"
-                      : "border-border text-muted-foreground"
-                  }`}
-                  onClick={() => setPriceFilter("All")}
-                >
-                  All
-                </button>
+                <FadeUp>
+                  <button
+                    className={`px-4 py-2 text-sm uppercase tracking-widest border ${
+                      priceFilter === "LOW"
+                        ? "border-primary text-primary"
+                        : "border-border text-muted-foreground"
+                    }`}
+                    onClick={() => setPriceFilter("LOW")}
+                  >
+                    Below ₹2,000
+                  </button>
+                </FadeUp>
+                <FadeUp>
+                  <button
+                    className={`px-4 py-2 text-sm uppercase tracking-widest border ${
+                      priceFilter === "MID"
+                        ? "border-primary text-primary"
+                        : "border-border text-muted-foreground"
+                    }`}
+                    onClick={() => setPriceFilter("MID")}
+                  >
+                    ₹2k – ₹5k
+                  </button>
+                </FadeUp>
+                <FadeUp>
+                  <button
+                    className={`px-4 py-2 text-sm uppercase tracking-widest border ${
+                      priceFilter === "HIGH"
+                        ? "border-primary text-primary"
+                        : "border-border text-muted-foreground"
+                    }`}
+                    onClick={() => setPriceFilter("HIGH")}
+                  >
+                    Above ₹5k
+                  </button>
+                </FadeUp>
+                <FadeUp>
+                  <button
+                    className={`px-4 py-2 text-sm uppercase tracking-widest border ${
+                      priceFilter === "All"
+                        ? "border-primary text-primary"
+                        : "border-border text-muted-foreground"
+                    }`}
+                    onClick={() => setPriceFilter("All")}
+                  >
+                    All
+                  </button>
+                </FadeUp>
               </div>
             </div>
 
             {/* Actions */}
             <div className="flex justify-between">
-              <button
-                onClick={() => {
-                  setGenderFilter("All");
-                  setPriceFilter("All");
-                  setIsFilterOpen(false);
-                }}
-                className="text-sm uppercase tracking-widest text-muted-foreground"
-              >
-                Reset
-              </button>
-
+              <FadeUp>
+                <button
+                  onClick={() => {
+                    setGenderFilter("All");
+                    setPriceFilter("All");
+                    setIsFilterOpen(false);
+                  }}
+                  className="text-sm uppercase tracking-widest text-muted-foreground"
+                >
+                  Reset
+                </button>
+              </FadeUp>
+              <FadeUp>
               <button
                 onClick={() => setIsFilterOpen(false)}
                 className="bg-primary text-primary-foreground px-6 py-3 uppercase tracking-widest text-sm"
               >
                 Apply
               </button>
+              </FadeUp>
             </div>
           </div>
         </div>
@@ -333,20 +357,26 @@ const Collections = () => {
       <section className="py-20 bg-charcoal relative">
         <div className="absolute inset-0 grain" />
         <div className="container mx-auto px-6 lg:px-12 relative z-10 text-center">
+          <FadeUp>
           <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
             Find The Collections And Explore Premium
           </h2>
+          </FadeUp>
+          <FadeUp>
           <p className="text-muted-foreground font-body mb-8">
             Refined Design, Superior Comfort, And Trusted Quality, Offering
             Styles. That Elevate Every Step With Confidence And Timeless
             Elegance.
           </p>
+          </FadeUp>
+          <FadeUp>
           <a
             href="/contact"
             className="inline-flex items-center gap-2 text-primary hover:text-gold-light transition-colors uppercase tracking-widest text-sm font-body"
           >
             Connect with Us <ArrowUpRight className="w-4 h-4" />
           </a>
+          </FadeUp>
         </div>
       </section>
 

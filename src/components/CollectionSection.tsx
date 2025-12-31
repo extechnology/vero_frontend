@@ -1,12 +1,9 @@
 import { useState } from "react";
-import { ArrowUpRight, Heart } from "lucide-react";
-import shoeWhite from "@/assets/shoe-white.jpg";
-import shoeGold from "@/assets/shoe-gold.jpg";
-import shoeBurgundy from "@/assets/shoe-burgundy.jpg";
-import shoeGrey from "@/assets/shoe-grey.jpg";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import useProducts from "@/hooks/useProducts";
 import { Product } from "@/types/product";
+import { FadeUp } from "./animations/FadeUp";
+import useProducts from "@/hooks/useProducts";
 
 const ProductCard = ({
   product,
@@ -17,7 +14,6 @@ const ProductCard = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const { data: products } = useProducts();
-  console.log(products, "products");
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   return (
@@ -30,35 +26,37 @@ const ProductCard = ({
       {/* Image Container */}
       <div className="relative aspect-[3/4] overflow-hidden bg-charcoal">
         {/* Background Glow on Hover */}
-        <div
-          className={`absolute inset-0 bg-primary/10 transition-opacity duration-500 ${
-            isHovered ? "opacity-100" : "opacity-0"
-          }`}
-        />
+        <FadeUp>
+          <div
+            className={`absolute inset-0 bg-primary/10 transition-opacity duration-500 ${
+              isHovered ? "opacity-100" : "opacity-0"
+            }`}
+          />
 
-        <img
-          src={`${backendUrl}${product.image}`}
-          alt={product.name}
-          className={`w-full h-full object-cover transition-all duration-700 ${
-            isHovered ? "scale-110" : "scale-100"
-          }`}
-        />
+          <img
+            src={`${backendUrl}${product.image}`}
+            alt={product.name}
+            className={`w-full h-full object-cover transition-all duration-700 ${
+              isHovered ? "scale-110" : "scale-100"
+            }`}
+          />
 
-        {/* Overlay on Hover */}
-        <div
-          className={`absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent transition-opacity duration-500 ${
-            isHovered ? "opacity-100" : "opacity-0"
-          }`}
-        />
+          {/* Overlay on Hover */}
+          <div
+            className={`absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent transition-opacity duration-500 ${
+              isHovered ? "opacity-100" : "opacity-0"
+            }`}
+          />
 
-        {/* New Badge */}
-        {product.is_new_arrival && (
-          <div className="absolute top-4 left-4">
-            <span className="bg-primary text-primary-foreground text-[10px] uppercase tracking-widest px-3 py-1.5 font-body">
-              New
-            </span>
-          </div>
-        )}
+          {/* New Badge */}
+          {product.is_new_arrival && (
+            <div className="absolute top-4 left-4">
+              <span className="bg-primary text-primary-foreground text-[10px] uppercase tracking-widest px-3 py-1.5 font-body">
+                New
+              </span>
+            </div>
+          )}
+        </FadeUp>
 
         {/* Wishlist Button */}
         {/* <button
@@ -120,17 +118,23 @@ const CollectionSection = () => {
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
           <div className="space-y-4">
-            <p className="text-primary uppercase tracking-[0.3em] text-sm font-body">
-              Featured Products
-            </p>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground">
-              The Collection
-            </h2>
+            <FadeUp>
+              <p className="text-primary uppercase tracking-[0.3em] text-sm font-body">
+                Featured Products
+              </p>
+            </FadeUp>
+            <FadeUp>
+              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground">
+                The Collection
+              </h2>
+            </FadeUp>
           </div>
-          <p className="text-muted-foreground max-w-md font-body">
-            Featured Products The Collection Designed with patience. Crafted
-            with precision. Perfected over all time
-          </p>
+          <FadeUp>
+            <p className="text-muted-foreground max-w-md font-body">
+              Featured Products The Collection Designed with patience. Crafted
+              with precision. Perfected over all time
+            </p>
+          </FadeUp>
         </div>
 
         {/* Products Grid */}
@@ -141,17 +145,19 @@ const CollectionSection = () => {
         </div>
 
         {/* View All Link */}
-        <div className="mt-16 text-center">
-          <a
-            href="#"
-            className="inline-flex items-center gap-3 text-foreground hover:text-primary transition-colors duration-300 group"
-          >
-            <span className="uppercase tracking-widest text-sm font-body">
-              View All Products
-            </span>
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-          </a>
-        </div>
+        <FadeUp>
+          <div className="mt-16 text-center">
+            <a
+              href="#"
+              className="inline-flex items-center gap-3 text-foreground hover:text-primary transition-colors duration-300 group"
+            >
+              <span className="uppercase tracking-widest text-sm font-body">
+                View All Products
+              </span>
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+            </a>
+          </div>
+        </FadeUp>
       </div>
     </section>
   );

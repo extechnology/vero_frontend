@@ -25,29 +25,35 @@ const StorySection = () => {
               </p>
             </FadeUp>
 
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight">
-              Designed by experts.
-              <br />
-              <span className="italic text-primary">Defined by elegance</span>
-            </h2>
+            <FadeUp>
+              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight">
+                Designed by experts.
+                <br />
+                <span className="italic text-primary">Defined by elegance</span>
+              </h2>
+            </FadeUp>
 
             <div className="space-y-6 text-muted-foreground font-body leading-relaxed">
-              <p>
-                Established in 2010, the company has been engaged in the
-                manufacturing and distribution of premium-quality footwear,
-                combining skilled craftsmanship, superior materials, and refined
-                design to ensure comfort, durability, and style.
-              </p>
+              <FadeUp>
+                <p>
+                  Established in 2010, the company has been engaged in the
+                  manufacturing and distribution of premium-quality footwear,
+                  combining skilled craftsmanship, superior materials, and
+                  refined design to ensure comfort, durability, and style.
+                </p>
+              </FadeUp>
             </div>
 
-            <Button
-              onClick={() => navigate("/story")}
-              variant="outline"
-              size="lg"
-            >
-              Discover Our Story
+            <FadeUp>
+              <Button
+                onClick={() => navigate("/story")}
+                variant="outline"
+                size="lg"
+              >
+                Discover Our Story
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
+            </FadeUp>
           </div>
 
           {/* Right - You tube video */}
