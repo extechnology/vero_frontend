@@ -31,40 +31,48 @@ const footerLinks = {
 
 const Footer = () => {
   return (
-    <footer className="py-20 lg:py-24 bg-background relative">
-      {/* Top Border */}
+    <footer className="relative bg-background">
+      {/* Top Divider */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
-      {/* Grain */}
-      <div className="absolute inset-0 grain" />
+      {/* Grain Overlay */}
+      <div className="pointer-events-none absolute inset-0 grain opacity-60" />
 
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 lg:gap-8">
-          {/* Brand Column */}
-          <div className="col-span-2 space-y-6">
-            <Link to="/" className="flex items-center gap-3">
-              <img src="/vero-logo1.png" className="h-10 w-auto" alt="" />
+      <div className="relative z-10 mx-auto max-w-fit px-6 py-16 sm:py-20 lg:px-12 lg:py-24">
+        {/* Main Grid */}
+        <div className="grid grid-cols-1 gap-14 sm:grid-cols-2 lg:grid-cols-6 lg:gap-10">
+          {/* Brand */}
+          <div className="lg:col-span-2 space-y-6">
+            <Link to="/" className="inline-flex items-center gap-3">
+              <img
+                src="/vero-logo1.png"
+                alt="VERO Footwear"
+                className="h-10 w-auto"
+              />
             </Link>
-            <p className="text-muted-foreground font-body text-sm leading-relaxed max-w-xs">
-              Elevated soles, Elevated standards & Luxury that moves with you,
-              Comfort that stays!
+
+            <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
+              Elevated soles, elevated standards — luxury that moves with you
+              and comfort that stays.
             </p>
-            <div className="flex gap-4">
-              {[Instagram, Twitter, Facebook].map((Icon, i) => (
+
+            <div className="flex items-center gap-4">
+              {[Instagram, Twitter, Facebook].map((Icon, index) => (
                 <a
-                  key={i}
+                  key={index}
                   href="#"
-                  className="w-10 h-10 flex items-center justify-center border border-border/30 text-muted-foreground hover:text-primary hover:border-primary transition-colors duration-300"
+                  aria-label="Social link"
+                  className="flex h-10 w-10 items-center justify-center rounded-md border border-border/40 text-muted-foreground transition-colors hover:border-primary hover:text-primary"
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="h-4 w-4" />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Shop Links */}
-          <div className="space-y-6">
-            <h4 className="font-body text-sm uppercase tracking-widest text-foreground">
+          {/* Quick Links */}
+          <nav className="space-y-6">
+            <h4 className="text-xs font-medium uppercase tracking-widest text-foreground">
               Quick Links
             </h4>
             <ul className="space-y-3">
@@ -72,80 +80,91 @@ const Footer = () => {
                 <li key={link.label}>
                   <Link
                     to={link.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-body"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
-
-          {/* Company Links */}
+          </nav>
 
           {/* Contact */}
-          <div className="space-y-6">
-            <h4 className="font-body text-sm uppercase tracking-widest text-foreground">
+          <div className="lg:col-span-2 space-y-6">
+            <h4 className="text-xs font-medium uppercase tracking-widest text-foreground">
               Contact
             </h4>
-            <p className="text-sm text-muted-foreground font-body">
-              VERO is an Initiative of Piumino Footwear
+
+            <p className="text-sm text-muted-foreground">
+              VERO is an initiative of{" "}
+              <span className="text-foreground">Piumino Footwear</span>
             </p>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-primary mt-0.5" />
-                <span className="text-sm text-muted-foreground font-body">
-                  15/617, KASHAYAPADI, <br /> FEROKE, Kozhikode, Kerala, 673631
+
+            <address className="not-italic space-y-4">
+              <div className="flex items-start gap-3">
+                <MapPin className="mt-1 h-4 w-4 text-primary" />
+                <span className="text-sm text-muted-foreground leading-relaxed">
+                  15/617, Kashayapadi
+                  <br />
+                  Feroke, Kozhikode
+                  <br />
+                  Kerala – 673631
                 </span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-primary" />
-                <span className="text-sm text-muted-foreground font-body">
+              </div>
+
+              <div className="flex items-center gap-3">
+                <Phone className="h-4 w-4 text-primary" />
+                <a
+                  href="tel:+918589010885"
+                  className="text-sm text-muted-foreground hover:text-foreground"
+                >
                   +91 858 901 0885
-                </span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-primary" />
-                <span className="text-sm text-muted-foreground font-body">
+                </a>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <Mail className="h-4 w-4 text-primary" />
+                <a
+                  href="mailto:verofootwears@gmail.com"
+                  className="text-sm text-muted-foreground hover:text-foreground"
+                >
                   verofootwears@gmail.com
-                </span>
-              </li>
-            </ul>
+                </a>
+              </div>
+            </address>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-border/20 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-muted-foreground font-body">
+        <div className="mt-16 flex flex-col gap-6 border-t border-border/30 pt-8 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-muted-foreground">
             © 2025 VERO. All rights reserved.
           </p>
-          <p className="text-xs text-muted-foreground font-body">
-            Our Parent Company name is Piumino Footwear
-          </p>
-          <div className="flex gap-6">
+
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-xs">
             <a
               href="#"
-              className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-300 font-body"
+              className="text-muted-foreground transition-colors hover:text-foreground"
             >
               Privacy Policy
             </a>
             <a
               href="#"
-              className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-300 font-body"
+              className="text-muted-foreground transition-colors hover:text-foreground"
             >
               Terms of Service
             </a>
-            <p className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-300 font-body">
-              {" "}
-              powered by{" "}
+            <span className="text-muted-foreground">
+              Powered by{" "}
               <a
-                target="_blank"
                 href="https://extechnology.in"
-                className="text-primary"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
               >
                 extechnology
               </a>
-            </p>
+            </span>
           </div>
         </div>
       </div>

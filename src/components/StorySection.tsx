@@ -1,8 +1,11 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import StoryVideo from "./YouTubeVid";
+import { useNavigate } from "react-router-dom";
+import { FadeUp } from "./animations/FadeUp";
 
 const StorySection = () => {
+  const navigate = useNavigate();
   return (
     <section
       id="story"
@@ -16,9 +19,11 @@ const StorySection = () => {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Left - Content */}
           <div className="space-y-8">
-            <p className="text-primary uppercase tracking-[0.3em] text-sm font-body">
-              Our Proficiency
-            </p>
+            <FadeUp>
+              <p className="text-primary uppercase tracking-[0.3em] text-sm font-body">
+                Our Proficiency
+              </p>
+            </FadeUp>
 
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight">
               Designed by experts.
@@ -35,14 +40,18 @@ const StorySection = () => {
               </p>
             </div>
 
-            <Button variant="outline" size="lg">
+            <Button
+              onClick={() => navigate("/story")}
+              variant="outline"
+              size="lg"
+            >
               Discover Our Story
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </div>
 
           {/* Right - You tube video */}
-          <StoryVideo/>
+          <StoryVideo />
         </div>
       </div>
     </section>

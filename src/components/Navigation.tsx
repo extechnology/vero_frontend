@@ -46,7 +46,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <img src="/vero-logo1.png" className="h-10 w-auto" alt="" />
+            <img src="/vero-logo1.png" className="h-8 md:h-10 w-auto" alt="" />
           </Link>
 
           {/* Desktop Navigation */}
